@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.56**
+**當前版本：V5.57**
 
 ## 重要警告
 
@@ -13,6 +13,14 @@
 ---
 
 ## 版本歷史
+
+### V5.57 (2026-03-31) ⭐ TNM 自動分期
+- **TNMInput 元件**：T/N/M 各值以 AJCC 9th 癌別專屬 chip 按鈕選擇（不可手輸）
+  - 每個癌別有各自有效的 T/N/M 值（BC/LC/CRC/GC/EC/OC/HCC/PC/BLC/OVC/PAC）
+  - 三項選完後自動判斷期別，顯示 Stage + 說明
+  - 「套用」按鈕一鍵填入臨床/病理期別
+  - 期別仍可透過 StageSelector 手動調整
+- **tnmStagingService.ts**：11 個癌別的 AJCC 9th TNM → 期別對應表
 
 ### V5.56 (2026-03-31)
 - **SmartDateInput**：新元件，支援 YYYYMMDD 連續輸入自動格式化為 YYYY-MM-DD，不跳格
@@ -80,6 +88,14 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.57 (2026-03-31) ⭐ TNM 自動分期
+- **TNMInput 元件**：T/N/M 各值以 AJCC 9th 癌別專屬 chip 按鈕選擇（不可手輸）
+  - 每個癌別有各自有效的 T/N/M 值（BC/LC/CRC/GC/EC/OC/HCC/PC/BLC/OVC/PAC）
+  - 三項選完後自動判斷期別，顯示 Stage + 說明
+  - 「套用」按鈕一鍵填入臨床/病理期別
+  - 期別仍可透過 StageSelector 手動調整
+- **tnmStagingService.ts**：11 個癌別的 AJCC 9th TNM → 期別對應表
 
 ### V5.56 (2026-03-31)
 - **SmartDateInput**：新元件，支援 YYYYMMDD 連續輸入自動格式化為 YYYY-MM-DD，不跳格
@@ -162,6 +178,14 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.57 (2026-03-31) ⭐ TNM 自動分期
+- **TNMInput 元件**：T/N/M 各值以 AJCC 9th 癌別專屬 chip 按鈕選擇（不可手輸）
+  - 每個癌別有各自有效的 T/N/M 值（BC/LC/CRC/GC/EC/OC/HCC/PC/BLC/OVC/PAC）
+  - 三項選完後自動判斷期別，顯示 Stage + 說明
+  - 「套用」按鈕一鍵填入臨床/病理期別
+  - 期別仍可透過 StageSelector 手動調整
+- **tnmStagingService.ts**：11 個癌別的 AJCC 9th TNM → 期別對應表
+
 ### V5.56 (2026-03-31)
 - **SmartDateInput**：新元件，支援 YYYYMMDD 連續輸入自動格式化為 YYYY-MM-DD，不跳格
   - 套用：病理確診日、初診日、首次治療日、生日、事件日期、排程日期等全部日期欄位
@@ -228,6 +252,14 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.57 (2026-03-31) ⭐ TNM 自動分期
+- **TNMInput 元件**：T/N/M 各值以 AJCC 9th 癌別專屬 chip 按鈕選擇（不可手輸）
+  - 每個癌別有各自有效的 T/N/M 值（BC/LC/CRC/GC/EC/OC/HCC/PC/BLC/OVC/PAC）
+  - 三項選完後自動判斷期別，顯示 Stage + 說明
+  - 「套用」按鈕一鍵填入臨床/病理期別
+  - 期別仍可透過 StageSelector 手動調整
+- **tnmStagingService.ts**：11 個癌別的 AJCC 9th TNM → 期別對應表
 
 ### V5.56 (2026-03-31)
 - **SmartDateInput**：新元件，支援 YYYYMMDD 連續輸入自動格式化為 YYYY-MM-DD，不跳格
