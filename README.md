@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.58**
+**當前版本：V5.59**
 
 ## 重要警告
 
@@ -13,6 +13,22 @@
 ---
 
 ## 版本歷史
+
+### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
+- **TNM 全癌別校正（AJCC 9th/8th）**：
+  - LC 肺癌：新增 T1d/T2c/N2a/N2b，IIID 期（AJCC 9th 新增）
+  - CRC 大腸直腸癌：N 值精確化（N1a/b/c、N2a/b）
+  - GC 胃癌：T1a/T1b、N3a/N3b 分級，期別表完整修正
+  - EC 食道癌：T1a/T1b 分開，I/II/III/IVA/IVB 對應
+  - OC 口腔癌：N2a/N2b/N2c 三型，IVA/IVB/IVC 明確
+  - OVC 卵巢癌：FIGO 2023（T1c1/T1c2/T1c3、N1a/N1b、M1a/M1b）
+  - EMC 子宮內膜癌：FIGO 2023 全新分期（含 IC、IIIC1/2）
+  - CC 子宮頸癌：FIGO 2018（T1a1/T1a2、T1b1~T1b3、IIIC1）
+  - BLC 膀胱癌：T2a/T2b/T3a/T3b/T4a/T4b 分開
+  - PC 攝護腺癌：T 值修正（移除 T1/T2 整合值），M1a/b/c
+  - PAC 胰臟癌：T1a/T1b/T1c 三亞型
+- **SmartDateInput 全面套用**：EventFormModal/ChemoScheduleModal/PDCAPage 補齊
+- **IndicatorsPage 分期整合**：臨床/病理分期改用 TNMInput，與診斷Tab共用同一資料庫
 
 ### V5.58 (2026-03-31)
 - TNM 選值改為純點按，期別唯讀（只由 TNM 自動填入，有清除鍵）
@@ -97,6 +113,22 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
+- **TNM 全癌別校正（AJCC 9th/8th）**：
+  - LC 肺癌：新增 T1d/T2c/N2a/N2b，IIID 期（AJCC 9th 新增）
+  - CRC 大腸直腸癌：N 值精確化（N1a/b/c、N2a/b）
+  - GC 胃癌：T1a/T1b、N3a/N3b 分級，期別表完整修正
+  - EC 食道癌：T1a/T1b 分開，I/II/III/IVA/IVB 對應
+  - OC 口腔癌：N2a/N2b/N2c 三型，IVA/IVB/IVC 明確
+  - OVC 卵巢癌：FIGO 2023（T1c1/T1c2/T1c3、N1a/N1b、M1a/M1b）
+  - EMC 子宮內膜癌：FIGO 2023 全新分期（含 IC、IIIC1/2）
+  - CC 子宮頸癌：FIGO 2018（T1a1/T1a2、T1b1~T1b3、IIIC1）
+  - BLC 膀胱癌：T2a/T2b/T3a/T3b/T4a/T4b 分開
+  - PC 攝護腺癌：T 值修正（移除 T1/T2 整合值），M1a/b/c
+  - PAC 胰臟癌：T1a/T1b/T1c 三亞型
+- **SmartDateInput 全面套用**：EventFormModal/ChemoScheduleModal/PDCAPage 補齊
+- **IndicatorsPage 分期整合**：臨床/病理分期改用 TNMInput，與診斷Tab共用同一資料庫
 
 ### V5.58 (2026-03-31)
 - TNM 選值改為純點按，期別唯讀（只由 TNM 自動填入，有清除鍵）
@@ -196,6 +228,22 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
+- **TNM 全癌別校正（AJCC 9th/8th）**：
+  - LC 肺癌：新增 T1d/T2c/N2a/N2b，IIID 期（AJCC 9th 新增）
+  - CRC 大腸直腸癌：N 值精確化（N1a/b/c、N2a/b）
+  - GC 胃癌：T1a/T1b、N3a/N3b 分級，期別表完整修正
+  - EC 食道癌：T1a/T1b 分開，I/II/III/IVA/IVB 對應
+  - OC 口腔癌：N2a/N2b/N2c 三型，IVA/IVB/IVC 明確
+  - OVC 卵巢癌：FIGO 2023（T1c1/T1c2/T1c3、N1a/N1b、M1a/M1b）
+  - EMC 子宮內膜癌：FIGO 2023 全新分期（含 IC、IIIC1/2）
+  - CC 子宮頸癌：FIGO 2018（T1a1/T1a2、T1b1~T1b3、IIIC1）
+  - BLC 膀胱癌：T2a/T2b/T3a/T3b/T4a/T4b 分開
+  - PC 攝護腺癌：T 值修正（移除 T1/T2 整合值），M1a/b/c
+  - PAC 胰臟癌：T1a/T1b/T1c 三亞型
+- **SmartDateInput 全面套用**：EventFormModal/ChemoScheduleModal/PDCAPage 補齊
+- **IndicatorsPage 分期整合**：臨床/病理分期改用 TNMInput，與診斷Tab共用同一資料庫
+
 ### V5.58 (2026-03-31)
 - TNM 選值改為純點按，期別唯讀（只由 TNM 自動填入，有清除鍵）
 - 各癌別 M 值依 AJCC 9th 校正：
@@ -279,6 +327,22 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
+- **TNM 全癌別校正（AJCC 9th/8th）**：
+  - LC 肺癌：新增 T1d/T2c/N2a/N2b，IIID 期（AJCC 9th 新增）
+  - CRC 大腸直腸癌：N 值精確化（N1a/b/c、N2a/b）
+  - GC 胃癌：T1a/T1b、N3a/N3b 分級，期別表完整修正
+  - EC 食道癌：T1a/T1b 分開，I/II/III/IVA/IVB 對應
+  - OC 口腔癌：N2a/N2b/N2c 三型，IVA/IVB/IVC 明確
+  - OVC 卵巢癌：FIGO 2023（T1c1/T1c2/T1c3、N1a/N1b、M1a/M1b）
+  - EMC 子宮內膜癌：FIGO 2023 全新分期（含 IC、IIIC1/2）
+  - CC 子宮頸癌：FIGO 2018（T1a1/T1a2、T1b1~T1b3、IIIC1）
+  - BLC 膀胱癌：T2a/T2b/T3a/T3b/T4a/T4b 分開
+  - PC 攝護腺癌：T 值修正（移除 T1/T2 整合值），M1a/b/c
+  - PAC 胰臟癌：T1a/T1b/T1c 三亞型
+- **SmartDateInput 全面套用**：EventFormModal/ChemoScheduleModal/PDCAPage 補齊
+- **IndicatorsPage 分期整合**：臨床/病理分期改用 TNMInput，與診斷Tab共用同一資料庫
 
 ### V5.58 (2026-03-31)
 - TNM 選值改為純點按，期別唯讀（只由 TNM 自動填入，有清除鍵）
