@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.62**
+**當前版本：V5.63**
 
 ## 重要警告
 
@@ -13,6 +13,11 @@
 ---
 
 ## 版本歷史
+
+### V5.63 (2026-03-31)
+- **修正醫師篩選**：patientService.listPatients 加入 patientPhysicians JOIN，physicianIds 正確填入；getPatientById 同步修正
+- **autoFieldService**：從事件自動計算所有 type:auto 欄位（hasChemo/hasRT/hasCCRT/hasTACE/hasRFA/daysToSurgery 等 30+個）；IndicatorsPage 開啟病人時自動帶入，手動輸入值優先
+- auto 欄位顯示改版：有值時綠底顯示計算結果 + 來源說明
 
 ### V5.62 (2026-03-31) ⭐ 測試資料全面改版
 - **測試資料 13癌×10人=130人**，各癌別有正確對應科別醫師：
@@ -145,6 +150,11 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.63 (2026-03-31)
+- **修正醫師篩選**：patientService.listPatients 加入 patientPhysicians JOIN，physicianIds 正確填入；getPatientById 同步修正
+- **autoFieldService**：從事件自動計算所有 type:auto 欄位（hasChemo/hasRT/hasCCRT/hasTACE/hasRFA/daysToSurgery 等 30+個）；IndicatorsPage 開啟病人時自動帶入，手動輸入值優先
+- auto 欄位顯示改版：有值時綠底顯示計算結果 + 來源說明
 
 ### V5.62 (2026-03-31) ⭐ 測試資料全面改版
 - **測試資料 13癌×10人=130人**，各癌別有正確對應科別醫師：
@@ -292,6 +302,11 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.63 (2026-03-31)
+- **修正醫師篩選**：patientService.listPatients 加入 patientPhysicians JOIN，physicianIds 正確填入；getPatientById 同步修正
+- **autoFieldService**：從事件自動計算所有 type:auto 欄位（hasChemo/hasRT/hasCCRT/hasTACE/hasRFA/daysToSurgery 等 30+個）；IndicatorsPage 開啟病人時自動帶入，手動輸入值優先
+- auto 欄位顯示改版：有值時綠底顯示計算結果 + 來源說明
+
 ### V5.62 (2026-03-31) ⭐ 測試資料全面改版
 - **測試資料 13癌×10人=130人**，各癌別有正確對應科別醫師：
   - BC：一般外科（林建華/李岳聰）+ 血液腫瘤科
@@ -423,6 +438,11 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.63 (2026-03-31)
+- **修正醫師篩選**：patientService.listPatients 加入 patientPhysicians JOIN，physicianIds 正確填入；getPatientById 同步修正
+- **autoFieldService**：從事件自動計算所有 type:auto 欄位（hasChemo/hasRT/hasCCRT/hasTACE/hasRFA/daysToSurgery 等 30+個）；IndicatorsPage 開啟病人時自動帶入，手動輸入值優先
+- auto 欄位顯示改版：有值時綠底顯示計算結果 + 來源說明
 
 ### V5.62 (2026-03-31) ⭐ 測試資料全面改版
 - **測試資料 13癌×10人=130人**，各癌別有正確對應科別醫師：
