@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.60**
+**當前版本：V5.61**
 
 ## 重要警告
 
@@ -13,6 +13,12 @@
 ---
 
 ## 版本歷史
+
+### V5.61 (2026-03-31)
+- **癌別專屬欄位全面中文化**：所有 coreMetrics key 都有中文標籤，涵蓋 hasEGFR、egfrResult、hasPET、petDate、hasTargetTherapy、doi、ene、pni 等 100+ 個欄位
+- **病理分期加切緣狀態**：R0/R1/R2/Rx 選單 + 切緣距離 (mm)，顯示時合併呈現「R0 (2mm)」
+- **品質監測「前往填寫」修正**：改導向指標資料頁（IndicatorsPage），可直接填寫缺漏指標
+- **資料一致性確認**：ER/PR/HER2/Ki67 等乳癌欄位統一存於 cancerSpecificData，無重複欄位
 
 ### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
 - **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
@@ -122,6 +128,12 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.61 (2026-03-31)
+- **癌別專屬欄位全面中文化**：所有 coreMetrics key 都有中文標籤，涵蓋 hasEGFR、egfrResult、hasPET、petDate、hasTargetTherapy、doi、ene、pni 等 100+ 個欄位
+- **病理分期加切緣狀態**：R0/R1/R2/Rx 選單 + 切緣距離 (mm)，顯示時合併呈現「R0 (2mm)」
+- **品質監測「前往填寫」修正**：改導向指標資料頁（IndicatorsPage），可直接填寫缺漏指標
+- **資料一致性確認**：ER/PR/HER2/Ki67 等乳癌欄位統一存於 cancerSpecificData，無重複欄位
 
 ### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
 - **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
@@ -246,6 +258,12 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.61 (2026-03-31)
+- **癌別專屬欄位全面中文化**：所有 coreMetrics key 都有中文標籤，涵蓋 hasEGFR、egfrResult、hasPET、petDate、hasTargetTherapy、doi、ene、pni 等 100+ 個欄位
+- **病理分期加切緣狀態**：R0/R1/R2/Rx 選單 + 切緣距離 (mm)，顯示時合併呈現「R0 (2mm)」
+- **品質監測「前往填寫」修正**：改導向指標資料頁（IndicatorsPage），可直接填寫缺漏指標
+- **資料一致性確認**：ER/PR/HER2/Ki67 等乳癌欄位統一存於 cancerSpecificData，無重複欄位
+
 ### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
 - **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
 - **組織型態選擇**（13 個癌別各有內建選項，點按式）：
@@ -354,6 +372,12 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.61 (2026-03-31)
+- **癌別專屬欄位全面中文化**：所有 coreMetrics key 都有中文標籤，涵蓋 hasEGFR、egfrResult、hasPET、petDate、hasTargetTherapy、doi、ene、pni 等 100+ 個欄位
+- **病理分期加切緣狀態**：R0/R1/R2/Rx 選單 + 切緣距離 (mm)，顯示時合併呈現「R0 (2mm)」
+- **品質監測「前往填寫」修正**：改導向指標資料頁（IndicatorsPage），可直接填寫缺漏指標
+- **資料一致性確認**：ER/PR/HER2/Ki67 等乳癌欄位統一存於 cancerSpecificData，無重複欄位
 
 ### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
 - **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
