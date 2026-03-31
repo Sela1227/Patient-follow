@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.59**
+**當前版本：V5.60**
 
 ## 重要警告
 
@@ -13,6 +13,15 @@
 ---
 
 ## 版本歷史
+
+### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
+- **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
+- **組織型態選擇**（13 個癌別各有內建選項，點按式）：
+  - BC：IDC/ILC/DCIS/黏液性癌等 8 項
+  - LC：腺癌/鱗癌/SCLC/LCNEC 等 8 項
+  - CRC/GC/EC/OC/HCC/PC/BLC/OVC/EMC/CC/PAC 各有對應選項
+  - 整合到 DiagnosisTab 和 IndicatorsPage，兩處同步讀寫
+- **全癌別專屬欄位中文化**：所有 13 癌別的 cancerSpecificData 欄位都有完整中文標籤
 
 ### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
 - **TNM 全癌別校正（AJCC 9th/8th）**：
@@ -113,6 +122,15 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
+- **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
+- **組織型態選擇**（13 個癌別各有內建選項，點按式）：
+  - BC：IDC/ILC/DCIS/黏液性癌等 8 項
+  - LC：腺癌/鱗癌/SCLC/LCNEC 等 8 項
+  - CRC/GC/EC/OC/HCC/PC/BLC/OVC/EMC/CC/PAC 各有對應選項
+  - 整合到 DiagnosisTab 和 IndicatorsPage，兩處同步讀寫
+- **全癌別專屬欄位中文化**：所有 13 癌別的 cancerSpecificData 欄位都有完整中文標籤
 
 ### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
 - **TNM 全癌別校正（AJCC 9th/8th）**：
@@ -228,6 +246,15 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
+- **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
+- **組織型態選擇**（13 個癌別各有內建選項，點按式）：
+  - BC：IDC/ILC/DCIS/黏液性癌等 8 項
+  - LC：腺癌/鱗癌/SCLC/LCNEC 等 8 項
+  - CRC/GC/EC/OC/HCC/PC/BLC/OVC/EMC/CC/PAC 各有對應選項
+  - 整合到 DiagnosisTab 和 IndicatorsPage，兩處同步讀寫
+- **全癌別專屬欄位中文化**：所有 13 癌別的 cancerSpecificData 欄位都有完整中文標籤
+
 ### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
 - **TNM 全癌別校正（AJCC 9th/8th）**：
   - LC 肺癌：新增 T1d/T2c/N2a/N2b，IIID 期（AJCC 9th 新增）
@@ -327,6 +354,15 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.60 (2026-03-31) ⭐ TNM 修正 + 組織型態 + 欄位中文化
+- **LC 肺癌 M 值修正（AJCC 9th）**：M1c → M1c1（單器官多處轉移）/ M1c2（多器官轉移）
+- **組織型態選擇**（13 個癌別各有內建選項，點按式）：
+  - BC：IDC/ILC/DCIS/黏液性癌等 8 項
+  - LC：腺癌/鱗癌/SCLC/LCNEC 等 8 項
+  - CRC/GC/EC/OC/HCC/PC/BLC/OVC/EMC/CC/PAC 各有對應選項
+  - 整合到 DiagnosisTab 和 IndicatorsPage，兩處同步讀寫
+- **全癌別專屬欄位中文化**：所有 13 癌別的 cancerSpecificData 欄位都有完整中文標籤
 
 ### V5.59 (2026-03-31) ⭐ TNM 完整校正 + 資料整合
 - **TNM 全癌別校正（AJCC 9th/8th）**：
