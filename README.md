@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.64**
+**當前版本：V5.66**
 
 ## 重要警告
 
@@ -13,6 +13,26 @@
 ---
 
 ## 版本歷史
+
+### V5.66 (2026-03-31)
+- **選項 ≤7 的 select 欄位全改為 chip 點選**（HER2 IHC、BCLC分期、Grade Group、殘存腫瘤、手術切緣等）
+- **histologyType 統一**：核心測量的組織型態直接讀寫 patient.histology，不重複存入 cancerSpecificData
+- **死亡日期欄位**：加入病人診斷 Tab 基本資料，SmartDateInput 輸入
+- **死亡自動算術後/化療後30天死亡**：autoFieldService 改用 patient.deathDate 計算（事件備用），IndicatorsPage 自動帶入
+
+### V5.65 (2026-03-31) ⭐ 指標頁優化 + 測試事件擴充
+- **IndicatorsPage 桌面兩欄佈局**：基本指標 Tab 改 grid-cols-2，有效利用大螢幕
+- **儲存按鈕移至 Header**：移除固定底部 bar，改在標題列右側（含分期資訊）
+- **各 Tab 改 flex-1 overflow-y-auto**，撐滿剩餘高度
+- **測試事件大幅擴充**：13 癌別涵蓋各種典型治療流程：
+  - BC: 乳保手術 → AC×4 → T×4 → 放療 → 荷爾蒙；全乳切除 → Trastuzumab+chemo × 6 → 放療
+  - LC: 肺葉切除 → 靶向；不可手術 IIIA → CCRT → Durvalumab 維持
+  - CRC: 手術 → FOLFOX；直腸癌術前 CCRT → 手術 → 輔助化療
+  - OC: 廣泛切除+頸廓清 → 放療；ENE+ → 術後 CCRT
+  - HCC: RFA（早期/晚期）；TACE × 2；OVC: 完整分期手術 → 6 個療程
+  - CC: 根除性子宮切除；CCRT + 近接治療 × 4
+  - PAC: Whipple → Gemcitabine+Cap；EC: 術前 CCRT → Ivor-Lewis + Nivolumab
+  - 每筆手術均附完整病理報告事件（含 TNM、R 狀態、淋巴結、分子標誌）
 
 ### V5.64 (2026-03-31)
 - **DateFilterPanel 全面改用 fixed 定位**：面板不再受 overflow:auto 截斷，所有頁面的日期篩選彈出框都完整顯示
@@ -155,6 +175,26 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.66 (2026-03-31)
+- **選項 ≤7 的 select 欄位全改為 chip 點選**（HER2 IHC、BCLC分期、Grade Group、殘存腫瘤、手術切緣等）
+- **histologyType 統一**：核心測量的組織型態直接讀寫 patient.histology，不重複存入 cancerSpecificData
+- **死亡日期欄位**：加入病人診斷 Tab 基本資料，SmartDateInput 輸入
+- **死亡自動算術後/化療後30天死亡**：autoFieldService 改用 patient.deathDate 計算（事件備用），IndicatorsPage 自動帶入
+
+### V5.65 (2026-03-31) ⭐ 指標頁優化 + 測試事件擴充
+- **IndicatorsPage 桌面兩欄佈局**：基本指標 Tab 改 grid-cols-2，有效利用大螢幕
+- **儲存按鈕移至 Header**：移除固定底部 bar，改在標題列右側（含分期資訊）
+- **各 Tab 改 flex-1 overflow-y-auto**，撐滿剩餘高度
+- **測試事件大幅擴充**：13 癌別涵蓋各種典型治療流程：
+  - BC: 乳保手術 → AC×4 → T×4 → 放療 → 荷爾蒙；全乳切除 → Trastuzumab+chemo × 6 → 放療
+  - LC: 肺葉切除 → 靶向；不可手術 IIIA → CCRT → Durvalumab 維持
+  - CRC: 手術 → FOLFOX；直腸癌術前 CCRT → 手術 → 輔助化療
+  - OC: 廣泛切除+頸廓清 → 放療；ENE+ → 術後 CCRT
+  - HCC: RFA（早期/晚期）；TACE × 2；OVC: 完整分期手術 → 6 個療程
+  - CC: 根除性子宮切除；CCRT + 近接治療 × 4
+  - PAC: Whipple → Gemcitabine+Cap；EC: 術前 CCRT → Ivor-Lewis + Nivolumab
+  - 每筆手術均附完整病理報告事件（含 TNM、R 狀態、淋巴結、分子標誌）
 
 ### V5.64 (2026-03-31)
 - **DateFilterPanel 全面改用 fixed 定位**：面板不再受 overflow:auto 截斷，所有頁面的日期篩選彈出框都完整顯示
@@ -312,6 +352,26 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.66 (2026-03-31)
+- **選項 ≤7 的 select 欄位全改為 chip 點選**（HER2 IHC、BCLC分期、Grade Group、殘存腫瘤、手術切緣等）
+- **histologyType 統一**：核心測量的組織型態直接讀寫 patient.histology，不重複存入 cancerSpecificData
+- **死亡日期欄位**：加入病人診斷 Tab 基本資料，SmartDateInput 輸入
+- **死亡自動算術後/化療後30天死亡**：autoFieldService 改用 patient.deathDate 計算（事件備用），IndicatorsPage 自動帶入
+
+### V5.65 (2026-03-31) ⭐ 指標頁優化 + 測試事件擴充
+- **IndicatorsPage 桌面兩欄佈局**：基本指標 Tab 改 grid-cols-2，有效利用大螢幕
+- **儲存按鈕移至 Header**：移除固定底部 bar，改在標題列右側（含分期資訊）
+- **各 Tab 改 flex-1 overflow-y-auto**，撐滿剩餘高度
+- **測試事件大幅擴充**：13 癌別涵蓋各種典型治療流程：
+  - BC: 乳保手術 → AC×4 → T×4 → 放療 → 荷爾蒙；全乳切除 → Trastuzumab+chemo × 6 → 放療
+  - LC: 肺葉切除 → 靶向；不可手術 IIIA → CCRT → Durvalumab 維持
+  - CRC: 手術 → FOLFOX；直腸癌術前 CCRT → 手術 → 輔助化療
+  - OC: 廣泛切除+頸廓清 → 放療；ENE+ → 術後 CCRT
+  - HCC: RFA（早期/晚期）；TACE × 2；OVC: 完整分期手術 → 6 個療程
+  - CC: 根除性子宮切除；CCRT + 近接治療 × 4
+  - PAC: Whipple → Gemcitabine+Cap；EC: 術前 CCRT → Ivor-Lewis + Nivolumab
+  - 每筆手術均附完整病理報告事件（含 TNM、R 狀態、淋巴結、分子標誌）
+
 ### V5.64 (2026-03-31)
 - **DateFilterPanel 全面改用 fixed 定位**：面板不再受 overflow:auto 截斷，所有頁面的日期篩選彈出框都完整顯示
 - **首次治療日改為自動推算**：從治療事件（手術/化療/放療/標靶/荷爾蒙/介入治療）中取最早完成的一筆，顯示「⚡ 自治療事件推算」；無事件時顯示「尚無治療事件」
@@ -453,6 +513,26 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.66 (2026-03-31)
+- **選項 ≤7 的 select 欄位全改為 chip 點選**（HER2 IHC、BCLC分期、Grade Group、殘存腫瘤、手術切緣等）
+- **histologyType 統一**：核心測量的組織型態直接讀寫 patient.histology，不重複存入 cancerSpecificData
+- **死亡日期欄位**：加入病人診斷 Tab 基本資料，SmartDateInput 輸入
+- **死亡自動算術後/化療後30天死亡**：autoFieldService 改用 patient.deathDate 計算（事件備用），IndicatorsPage 自動帶入
+
+### V5.65 (2026-03-31) ⭐ 指標頁優化 + 測試事件擴充
+- **IndicatorsPage 桌面兩欄佈局**：基本指標 Tab 改 grid-cols-2，有效利用大螢幕
+- **儲存按鈕移至 Header**：移除固定底部 bar，改在標題列右側（含分期資訊）
+- **各 Tab 改 flex-1 overflow-y-auto**，撐滿剩餘高度
+- **測試事件大幅擴充**：13 癌別涵蓋各種典型治療流程：
+  - BC: 乳保手術 → AC×4 → T×4 → 放療 → 荷爾蒙；全乳切除 → Trastuzumab+chemo × 6 → 放療
+  - LC: 肺葉切除 → 靶向；不可手術 IIIA → CCRT → Durvalumab 維持
+  - CRC: 手術 → FOLFOX；直腸癌術前 CCRT → 手術 → 輔助化療
+  - OC: 廣泛切除+頸廓清 → 放療；ENE+ → 術後 CCRT
+  - HCC: RFA（早期/晚期）；TACE × 2；OVC: 完整分期手術 → 6 個療程
+  - CC: 根除性子宮切除；CCRT + 近接治療 × 4
+  - PAC: Whipple → Gemcitabine+Cap；EC: 術前 CCRT → Ivor-Lewis + Nivolumab
+  - 每筆手術均附完整病理報告事件（含 TNM、R 狀態、淋巴結、分子標誌）
 
 ### V5.64 (2026-03-31)
 - **DateFilterPanel 全面改用 fixed 定位**：面板不再受 overflow:auto 截斷，所有頁面的日期篩選彈出框都完整顯示
