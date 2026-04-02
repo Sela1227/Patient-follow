@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.79**
+**當前版本：V5.80**
 
 ## 重要警告
 
@@ -13,6 +13,15 @@
 ---
 
 ## 版本歷史
+
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
 
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
@@ -40,6 +49,15 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
 
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
@@ -280,6 +298,15 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
+
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
   - PatientsPage：全部醫師（select）、確定要刪除病人（DeleteConfirmModal 標題/說明/按鈕：取消/確認刪除）
@@ -306,6 +333,15 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
 
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
@@ -560,6 +596,15 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
+
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
   - PatientsPage：全部醫師（select）、確定要刪除病人（DeleteConfirmModal 標題/說明/按鈕：取消/確認刪除）
@@ -586,6 +631,15 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
 
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
@@ -826,6 +880,15 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
+
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
   - PatientsPage：全部醫師（select）、確定要刪除病人（DeleteConfirmModal 標題/說明/按鈕：取消/確認刪除）
@@ -852,6 +915,15 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.80 (2026-04-02)
+- **病人管理頁文字全面修復**
+  - STATUS_LABELS：inactive→非活躍、completed→已結案（空字串修復）
+  - SORT_LABELS：病歷號/姓名/診斷日期/癌別/分期/主治醫師（空字串修復）
+  - PatientCard：已歿/已結案狀態標籤、編輯/刪除選單文字
+  - 頁首按鈕：批次操作、新增病人
+  - 自訂日期選擇器：自訂起訖日 label
+  - DeleteConfirmModal：標題/說明文字已於 V5.79 修復
 
 ### V5.79 (2026-04-02)
 - **中文字串完整還原（完成）**：根據 README 改版歷程逐功能核對，修復剩餘缺漏
