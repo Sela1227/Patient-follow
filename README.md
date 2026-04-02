@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.75**
+**當前版本：V5.76**
 
 ## 重要警告
 
@@ -13,6 +13,17 @@
 ---
 
 ## 版本歷史
+
+### V5.76 (2026-04-02)
+- **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
+- **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
+- **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
+- **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.76 (2026-04-02)
+- **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
+- **DiagnosisTab 完整重寫**：移除「基本資料」section（讀取和編輯模式一致，不再有僅編輯時才出現的區塊）；三欄：欄1=組織型態+診斷資訊、欄2=臨床分期+病理分期、欄3=癌別專屬+備註；中文標籤完整還原
+- **基本資料改在總覽頁編輯**：總覽頁資訊卡「編輯」按鈕開啟 inline edit（姓名/病歷號/性別/生日/狀態/個案分類/死亡日期），儲存後刷新
 
 ### V5.75 (2026-04-02)
 - **診斷頁欄列修正**：完整重寫三欄佈局，欄1=組織型態+診斷資訊，欄2=基本資料(編輯時)+臨床分期+病理分期，欄3=癌別專屬+備註，各欄用獨立 div.space-y-3 堆疊
@@ -226,6 +237,17 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.76 (2026-04-02)
+- **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
+- **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
+- **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
+- **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.76 (2026-04-02)
+- **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
+- **DiagnosisTab 完整重寫**：移除「基本資料」section（讀取和編輯模式一致，不再有僅編輯時才出現的區塊）；三欄：欄1=組織型態+診斷資訊、欄2=臨床分期+病理分期、欄3=癌別專屬+備註；中文標籤完整還原
+- **基本資料改在總覽頁編輯**：總覽頁資訊卡「編輯」按鈕開啟 inline edit（姓名/病歷號/性別/生日/狀態/個案分類/死亡日期），儲存後刷新
 
 ### V5.75 (2026-04-02)
 - **診斷頁欄列修正**：完整重寫三欄佈局，欄1=組織型態+診斷資訊，欄2=基本資料(編輯時)+臨床分期+病理分期，欄3=癌別專屬+備註，各欄用獨立 div.space-y-3 堆疊
@@ -454,6 +476,17 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.76 (2026-04-02)
+- **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
+- **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
+- **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
+- **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.76 (2026-04-02)
+- **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
+- **DiagnosisTab 完整重寫**：移除「基本資料」section（讀取和編輯模式一致，不再有僅編輯時才出現的區塊）；三欄：欄1=組織型態+診斷資訊、欄2=臨床分期+病理分期、欄3=癌別專屬+備註；中文標籤完整還原
+- **基本資料改在總覽頁編輯**：總覽頁資訊卡「編輯」按鈕開啟 inline edit（姓名/病歷號/性別/生日/狀態/個案分類/死亡日期），儲存後刷新
+
 ### V5.75 (2026-04-02)
 - **診斷頁欄列修正**：完整重寫三欄佈局，欄1=組織型態+診斷資訊，欄2=基本資料(編輯時)+臨床分期+病理分期，欄3=癌別專屬+備註，各欄用獨立 div.space-y-3 堆疊
 - **工作中心統計卡置中**：2×2 大統計卡加 text-center，數字/標題/副標題全置中
@@ -666,6 +699,17 @@
 - 展開後指標列改為白底+左側邊框（非彩色底）
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
+
+### V5.76 (2026-04-02)
+- **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
+- **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
+- **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
+- **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.76 (2026-04-02)
+- **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
+- **DiagnosisTab 完整重寫**：移除「基本資料」section（讀取和編輯模式一致，不再有僅編輯時才出現的區塊）；三欄：欄1=組織型態+診斷資訊、欄2=臨床分期+病理分期、欄3=癌別專屬+備註；中文標籤完整還原
+- **基本資料改在總覽頁編輯**：總覽頁資訊卡「編輯」按鈕開啟 inline edit（姓名/病歷號/性別/生日/狀態/個案分類/死亡日期），儲存後刷新
 
 ### V5.75 (2026-04-02)
 - **診斷頁欄列修正**：完整重寫三欄佈局，欄1=組織型態+診斷資訊，欄2=基本資料(編輯時)+臨床分期+病理分期，欄3=癌別專屬+備註，各欄用獨立 div.space-y-3 堆疊
