@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.77**
+**當前版本：V5.78**
 
 ## 重要警告
 
@@ -14,6 +14,16 @@
 
 ## 版本歷史
 
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
+
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
@@ -22,6 +32,16 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
 
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
@@ -244,6 +264,16 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
+
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
@@ -252,6 +282,16 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
 
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
@@ -488,6 +528,16 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
+
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
@@ -496,6 +546,16 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
 
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
@@ -718,6 +778,16 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
+
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
@@ -726,6 +796,16 @@
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.78 (2026-04-02)
+- **中文字串大規模還原（持續）**：以 V5.75 bundle 為真相來源，系統性比對 V5.77 和 V5.75 的 2000+ 中文字串，逐一還原遺失的標籤
+  - WorkCenterPage：統計卡、待辦分類、備份文字（195 CJK）
+  - PatientsPage：搜尋欄、篩選標籤、狀態顯示（68 CJK）
+  - PDCAPage：PDCA 階段標籤、表單欄位、完成按鈕（184 CJK）
+  - QualityMonitorPage：報表標籤、匯出選項、預警分類（167 CJK）
+  - IndicatorsPage：完治選項、指標分類標題、事件篩選（123 CJK）
+  - PatientDetailPage：CANCER_FIELD_LABELS 212 個標籤完整還原（1168 CJK）
+- PDCAProject interface：改為 optional fields，防止資料格式不符導致空白頁
 
 ### V5.77 (2026-04-02)
 - **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
