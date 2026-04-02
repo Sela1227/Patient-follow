@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.76**
+**當前版本：V5.77**
 
 ## 重要警告
 
@@ -14,11 +14,17 @@
 
 ## 版本歷史
 
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
+
 ### V5.76 (2026-04-02)
 - **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
 ### V5.76 (2026-04-02)
 - **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
@@ -238,11 +244,17 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
+
 ### V5.76 (2026-04-02)
 - **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
 ### V5.76 (2026-04-02)
 - **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
@@ -476,11 +488,17 @@
 - 癌別專屬欄位顯示中文標籤（hasSentinelBiopsy → 哨兵淋巴結切片 等）
 - 治療 Tab 篩選後新增事件自動預設該類型
 
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
+
 ### V5.76 (2026-04-02)
 - **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
 ### V5.76 (2026-04-02)
 - **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
@@ -700,11 +718,17 @@
 - 缺漏清單：頭像改首字縮寫、膠囊型分組切換按鈕
 - 趨勢預警：統計格改白底、預警卡改左側邊框樣式
 
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
+
 ### V5.76 (2026-04-02)
 - **PDCAPage 修正**：修正 TEST_PDCA_PROJECTS 結構（加入正確 phases 結構與 currentPhase），擴充為 3 筆測試專案，移除錯誤的自動補種邏輯
 - **診斷頁編輯=顯示同區塊**：移除「基本資料」編輯 Section，診斷頁只顯示診斷相關資料（組織型態、診斷資訊、臨床分期、病理分期、癌別專屬、備註）
 - **總覽頁基本資料 inline 編輯**：資訊卡右上「編輯」按鈕展開 inline 表單，可直接編輯姓名/病歷號/性別/生日/狀態/個案分類，儲存後即時刷新
 - **全面移除 emoji**：PatientDetailPage、WorkCenterPage、PDCAPage、IndicatorsPage、QualityMonitorPage、PatientsPage 共 6 個檔案清除所有 emoji
+
+### V5.77 (2026-04-02)
+- **中文字串全面還原**：掃描所有 .tsx 原始檔，修復因 Python 腳本處理導致中文被清空的問題。涵蓋 WorkCenterPage（統計卡標籤、待辦分類、備份文字）、PatientsPage（篩選器、快速標籤）、PDCAPage（統計標籤、PDCA 階段說明）、QualityMonitorPage（分頁標籤、匯出選項）、IndicatorsPage（子頁籤、事件篩選）、PatientDetailPage（Tab 標籤、資訊卡欄位、治療摘要）
 
 ### V5.76 (2026-04-02)
 - **PDCAPage 空白修正（根本原因）**：PDCAProject interface 中 indicatorId/indicatorName/cancerCode/description/createdAt/updatedAt 改為 optional，並加入 problem/goal/indicator/responsiblePerson/department 欄位；加入 phases 存取的 null-safety（?. 可選鏈）防止未定義資料造成整頁 crash
