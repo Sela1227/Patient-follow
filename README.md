@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.85**
+**當前版本：V5.86**
 
 ## 重要警告
 
@@ -13,6 +13,27 @@
 ---
 
 ## 版本歷史
+
+### V5.86 (2026-04-03)
+- **各頁頭部風格統一**：
+  - PatientsPage title → 病人管理；WorkCenterPage → 工作中心；IndicatorsPage → 指標資料
+  - PatientsPage subtitle → 共 N 位病人；IndicatorsPage subtitle → N 項待補
+  - PatientDetailPage 頂部 header 改用 CSS 變數（var(--bg-card)、var(--border)、var(--text)）
+  - DashboardPage、StatsPage、SummaryPage、ReminderPage：h1/border/bg 改 CSS 變數
+- **癌別專屬欄位全面補完（指標資料頁「核心測量」Tab 可編輯）**：
+  - BC：新增 erStatus、prStatus、hasMammography、mammographyDate
+  - LC：新增 pdl1Expression、hasEGFR、hasLobectomy、hasPET、petDate
+  - OC：新增 hasBetelNut、hasSmoking、hasAlcohol
+  - HCC：新增 hasCirrhosis、hasPortalVeinInvasion、hepatitisType
+  - GC：新增 ebvStatus、hasPostOpChemo、hasNeoadjuvantChemo
+  - EC：新增 tumorSite、hasCcrtBeforeSurgery
+  - BLC：新增 isMuscleinvasive、carcinomaInSitu、hasIntravesical
+  - OVC：新增 brca1、brca2、hrdStatus、hasDebulking
+  - EMC：新增 mmrStatus、poleStatus、p53
+  - CC：新增 hpvStatus、hpvType
+  - PAC：新增 hasVascularInvasion、caLevel
+  - CRC：新增 hasColonoscopy
+- **testData key 名稱統一**：brafStatus→braf、krasStatus→kras、msiStatus→msi、emcType→endometrialType 等 10 組 key 更名，與 CANCER_SPECIFIC_FIELDS 對齊
 
 ### V5.85 (2026-04-03)
 - **總覽頁資訊卡優化（置中小格）**：
