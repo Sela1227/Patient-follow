@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V5.86**
+**當前版本：V5.88**
 
 ## 重要警告
 
@@ -13,6 +13,23 @@
 ---
 
 ## 版本歷史
+
+### V5.88 (2026-04-03)
+- **全頁面空字串掃描修復**：系統性掃描 8 個主要頁面，修復所有空白按鈕/標籤
+  - PDCAPage：ProjectFormModal（取消/儲存/建立）、CompleteModal（取消/確認完成）、modal 標題顯示專案名稱
+  - PatientDetailPage：toggle complete toast（已標記完成/未完成）、找不到病人資料提示、返回病人列表按鈕
+  - WorkCenterPage：備份卡片標題「資料備份」
+  - IndicatorsPage：臨床期別標籤、病理期別標籤、個案分類警示文字（請先選擇個案分類）
+  - MasterDataPage：取消/新增/儲存按鈕
+
+### V5.87 (2026-04-03)
+- **指標資料頁「基本指標/核心測量」Tab 編輯鈕文字還原**：取消/儲存/編輯按鈕文字空白修復；事件 Tab「新增事件」「化療排程」按鈕文字還原
+- **資料唯一儲存確認**：DiagnosisTab、IndicatorsPage PatientDetailPanel、OverviewTab 均寫入同一筆 db.patients 記錄，無重複儲存；cancerSpecificData 合併邏輯改為 spread 合併（舊值 + 新值），避免遺漏
+- **診斷頁 Column 3 癌別專屬欄位可編輯**：
+  - 編輯模式：根據 CANCER_CORE_METRICS 定義自動生成輸入元件（chip 選擇 / select / 日期 / 文字）
+  - 讀取模式：顯示現有值（InfoRow 格式）
+  - DiagnosisTab form state 新增 cancerSpecificData，儲存時合併寫回
+  - 不含 auto 自動計算欄位（type='auto'）
 
 ### V5.86 (2026-04-03)
 - **各頁頭部風格統一**：
