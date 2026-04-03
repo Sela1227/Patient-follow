@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.0.0**
+**當前版本：V6.0.1**
 
 ## 重要警告
 
@@ -13,6 +13,16 @@
 ---
 
 ## 版本歷史
+
+### V6.0.1 (2026-04-03)
+- **主背景色調整**：--bg #F7F9FB → #CBD5E1（霧灰），--bg-hover #F0F4F8 → #B8C4D4，--border #E8ECF1 → #94A3B8（深霧灰）
+- **新增介入事件類型**：RFA（射頻消融）/ TACE（肝動脈栓塞化療）/ HAIC（肝動脈灌注化療）
+  - 獨立 event code：rfa / tace / haic，sortOrder 71-73
+  - autoFieldService 自動偵測：event.eventType === 'rfa/tace/haic' 或 title 含關鍵字
+  - 指標服務自動計算：hasTACE / hasRFA 從 rfa/tace event 自動推算
+  - HAIC 加入 HCC cancerSpecificData 欄位（hasHAIC，type auto）
+  - 事件篩選 Tab 新增 RFA / TACE / HAIC 選項
+  - ensureNewEventTypes 啟動時自動補種新事件類型（無需重置 DB）
 
 ### V6.0.0 (2026-04-03)
 - **版本命名規則改為語義化三碼（major.minor.patch）**：
