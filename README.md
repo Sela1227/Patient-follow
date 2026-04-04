@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.8**
+**當前版本：V6.2.9**
 
 ## 重要警告
 
@@ -13,6 +13,20 @@
 ---
 
 ## 版本歷史
+
+### V6.2.9 (2026-04-04)
+- **病人詳情頁統一入口（移除 PatientDetailPanel 重複代碼）**：
+  - 刪除 IndicatorsPage 內嵌的 PatientDetailPanel（~28,000 chars 重複代碼）
+  - 刪除 EventsTabPanel（~6,400 chars 重複代碼）
+  - 所有病人點擊（IndicatorsPage / WorkCenterPage / PatientsPage）統一導航至 PatientDetailPage
+  - NavigationStore 新增 initialPatientTab 欄位 + navigateToPatient() action
+  - 從指標頁點擊病人 → 直接開啟「指標」tab
+  - 從工作中心點擊病人 → 直接開啟「總覽」tab
+  - 取代原本 setSelectedPatientId + setCurrentPage 兩步驟操作
+- **CLAUDE.md 全面更新**（從 V5.93 補到 V6.2.9）：
+  - 新增「導覽系統」章節（navigateToPatient 統一規範）
+  - 新增「踩過的坑」章節（7 個避免重蹈的問題）
+  - 更新所有事件代碼、設計系統、按鈕標準
 
 ### V6.2.8 (2026-04-04)
 - **🔴 修復：工作中心病人無法點選**
