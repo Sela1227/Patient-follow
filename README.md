@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.7**
+**當前版本：V6.2.8**
 
 ## 重要警告
 
@@ -13,6 +13,17 @@
 ---
 
 ## 版本歷史
+
+### V6.2.8 (2026-04-04)
+- **🔴 修復：工作中心病人無法點選**
+  - 根本原因：點擊病人只呼叫 setSelectedPatientId，未呼叫 setCurrentPage('patients')
+  - App.tsx 判斷：需要 currentPage === 'patients' && selectedPatientId 才顯示 PatientDetailPage
+  - 修復：WorkCenterPage 點擊 handler 同時設定 patientId + currentPage
+- **影像種類整合 EventFormModal**：
+  - 新增事件時，若事件類型為「影像追蹤」，標題改為「影像種類」下拉選單
+  - 選項來源：主檔維護 → 影像種類（CT/MRI/超音波等）
+  - 選「其他」可手動輸入
+  - 非影像事件維持原本的自由文字標題
 
 ### V6.2.7 (2026-04-04)
 - **測試資料全面重設計（42 位病人，覆蓋所有功能測試）**：
