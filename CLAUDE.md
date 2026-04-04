@@ -336,4 +336,24 @@ grep -r "toast\.\w\+('')" src/
 
 ---
 
-*最後更新：V6.0.0 / 2026-04-03*
+*最後更新：V6.1.0 / 2026-04-03*
+
+## 十五、帳號系統（V6.1.0）
+
+預設帳號：admin / admin1234（首次啟動自動建立）
+
+### 角色
+- **admin**：看全部，可管理帳號
+- **nurse**：只看 allowedCancerCodes 的病人，可切換瀏覽模式（唯讀）
+
+### 關鍵檔案
+- src/services/authService.ts — 登入/登出/CRUD/SHA-256 hash
+- src/pages/LoginPage.tsx — 登入頁
+- src/stores/index.ts → useAuthStore — 全域 currentUser
+
+### 帳號管理入口
+主檔維護 → 帳號管理 Tab（僅 admin 使用）
+
+### 癌別過濾套用位置
+PatientsPage / WorkCenterPage / IndicatorsPage
+
