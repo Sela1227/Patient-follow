@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.0**
+**當前版本：V6.3.1**
 
 ## 重要警告
 
@@ -13,6 +13,19 @@
 ---
 
 ## 版本歷史
+
+### V6.3.1 (2026-04-04)
+- **病人詳情頁改為 7 Tab 設計（原 5 Tab）**：
+  - 原「診斷」tab（35K chars，7個section）拆為 3 個獨立 tab：
+    - 基本資料：組織型態 + 診斷資訊（初診日/病理確診日/首次治療日/ICD碼）+ 備註
+    - 分期：臨床分期（治療前）cTNM + 病理分期（術後）pTNM + 淋巴結/切緣
+    - 收案/癌別：收案分類/完治率 + 癌別專屬欄位（ER/PR/HER2、EGFR 等）
+  - 7 tab 順序：總覽 → 基本資料 → 分期 → 收案/癌別 → 事件 → 指標 → 追蹤
+  - navigateToPatient() 新增 basic / staging / cancer 目標 tab
+  - PatientTab type 更新並 export
+- **指標缺漏展開按鈕統一樣式**：
+  - 從右上角「▼ 展開」文字改為 ChevronDown/ChevronUp 圖示
+  - 與其他 accordion 區塊（缺完治率、無治療記錄等）完全一致
 
 ### V6.3.0 (2026-04-04)
 - **🔴 修復：curativeDenominator / curativeNumerator 欄位整合後遺失**

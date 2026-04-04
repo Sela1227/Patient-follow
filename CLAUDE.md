@@ -151,7 +151,9 @@ const { navigateToPatient } = useNavigationStore();
 
 // 用法
 navigateToPatient(patientId, 'overview')    // 總覽 tab
-navigateToPatient(patientId, 'diagnosis')   // 診斷 tab
+navigateToPatient(patientId, 'basic')       // 基本資料 tab（人口學+診斷日期+ICD）
+navigateToPatient(patientId, 'staging')     // 分期 tab（TNM）
+navigateToPatient(patientId, 'cancer')      // 收案/癌別 tab（完治率+癌別欄位）
 navigateToPatient(patientId, 'treatment')   // 事件 tab
 navigateToPatient(patientId, 'indicators')  // 指標 tab
 navigateToPatient(patientId, 'followup')    // 追蹤 tab
