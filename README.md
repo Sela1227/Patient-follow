@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.2**
+**當前版本：V6.2.3**
 
 ## 重要警告
 
@@ -13,6 +13,19 @@
 ---
 
 ## 版本歷史
+
+### V6.2.3 (2026-04-04)
+- **死碼清除**：
+  - 刪除 8 個未使用頁面（215,308 chars）：DashboardPage / EventsPage / IndicatorMonitorPage / IndicatorTrendPage / PlaceholderPages / ReminderPage / StatsPage / SummaryPage
+  - 移除 QualityMonitorPage 主組件函式（9,989 chars），僅保留被 IndicatorsPage 使用的 sub-component exports
+  - App.tsx 移除對已刪頁面的路由和 import
+- **動態 import → 靜態 import**（修正 Vite bundle warning）：
+  - ToolsPage: 移除 await import('../services/backupService') / import('../stores')
+  - MasterDataPage: 移除 import('../db') 動態載入
+  - WorkCenterPage: 移除 import('../stores').useAuthStore 動態載入
+- **Console 清理**：移除 18 個 console.log/warn（保留 catch block 的 console.error）
+- **樣式一致性**：批量修復 163 個殘留 slate-* Tailwind class → CSS vars
+- Bundle JS: 1,293 kB（較之前 ~1,500 kB 縮減）
 
 ### V6.2.2 (2026-04-04)
 - **指標缺漏區塊可收合**：待補資料 tab 底部的「指標缺漏（未達標）」區塊新增展開/收合切換，預設收合
