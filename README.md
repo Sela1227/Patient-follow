@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.1**
+**當前版本：V6.3.2**
 
 ## 重要警告
 
@@ -13,6 +13,16 @@
 ---
 
 ## 版本歷史
+
+### V6.3.2 (2026-04-04)
+- **癌別欄位盤點與修復**：
+  - BC 乳癌：ER/PR 數字欄位（erPercent/prPercent，%）確認保留，可填百分比數字
+  - BC 乳癌：erStatus/prStatus 改為 auto 欄位，由 erPercent/prPercent 自動推算（>0%→陽性，0%→陰性）
+  - PC 攝護腺癌：gleasonScore 改為 auto，由 gleasonPrimary + gleasonSecondary 自動計算（如 3+4=7）
+  - PAC 胰臟癌：刪除重複的 caLevel 欄位（與 ca199 完全相同）
+- **Auto 欄位即時更新**：edit mode 中修改 erPercent/gleasonPrimary 等欄位時，對應 auto 欄位即時重新計算
+- **數字欄位顯示單位**：view mode 中數字欄位現在顯示單位（如 90 % / 12 ng/mL / 2.5 cm）
+- **測試資料更新**：BC 病人改用 erPercent/prPercent 數值，PC 病人改用 gleasonPrimary/Secondary
 
 ### V6.3.1 (2026-04-04)
 - **病人詳情頁改為 7 Tab 設計（原 5 Tab）**：
