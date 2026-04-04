@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.8**
+**當前版本：V6.3.9**
 
 ## 重要警告
 
@@ -13,6 +13,20 @@
 ---
 
 ## 版本歷史
+
+### V6.3.9 (2026-04-04)
+- **全面重複 code 盤點與清理（~19,500 chars）**：
+  - **PatientDetailModal.tsx（刪除 14,556 chars）**：完全沒有被任何檔案 import，純粹的 dead code
+  - **indicatorHelpers.ts（新建共用 helper）**：從 3 個 indicator service 提出重複函式：
+    - getEventsByType / getFirstEvent / daysBetween / stageMatches / normalizeStage
+    - 每個函式原本在 nationalIndicatorService.ts / .2.ts / .3.ts 各定義一次（共 15 個函式定義 → 5 個）
+  - **DeleteConfirmModal（提出為 components/DeleteConfirmModal.tsx）**：
+    - PatientsPage 和 WorkPage 各自有完整的 DeleteConfirmModal 元件定義，現在統一共用
+    - 支援 patientName 或 title 兩種 props 介面（兩頁的使用方式不同）
+  - **TREATMENT_TYPES（統一從 autoFieldService export）**：
+    - 原本在 autoFieldService / PatientDetailPage / WorkCenterPage 各自定義
+    - 現在只在 autoFieldService 定義並 export，其他兩頁 import 使用
+  - 同時清除各函式提出後的 orphaned code（孤立的函式 body、空 const 宣告等）
 
 ### V6.3.8 (2026-04-04)
 - **🔴 修復：總覽頁與基本資料頁重複欄位問題**
