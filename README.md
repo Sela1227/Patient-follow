@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.3**
+**當前版本：V6.2.4**
 
 ## 重要警告
 
@@ -13,6 +13,19 @@
 ---
 
 ## 版本歷史
+
+### V6.2.4 (2026-04-04)
+- **按鈕風格全面統一**：
+  - 新增 btn-danger CSS class（危險操作用紅色，如確認刪除）
+  - 新增 CSS vars：--primary / --primary-hover
+  - 14 個頁面/元件的圖示按鈕 rounded-lg → rounded-xl
+  - PatientDetailPage：取消/儲存/編輯 改為標準 btn-secondary / btn-primary
+  - BatchOperationModal：取消 改為 btn-secondary
+  - PDCAPage：action 按鈕改為 btn-secondary
+  - ToolsPage：中斷按鈕 rounded-lg → rounded-xl
+  - PatientFormModal：新增醫師虛線按鈕 rounded-xl
+  - 全面清除 hover:bg-slate-200（ImportPage / EventFormModal / PatientDetailModal）→ hover:bg-[var(--bg-hover)]
+  - PDCAPage：#B56060 hardcoded → var(--danger)
 
 ### V6.2.3 (2026-04-04)
 - **死碼清除**：
