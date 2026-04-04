@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.2**
+**當前版本：V6.3.3**
 
 ## 重要警告
 
@@ -13,6 +13,22 @@
 ---
 
 ## 版本歷史
+
+### V6.3.3 (2026-04-04)
+- **Q1 🔴 修復：首次治療日永遠空白**
+  - 根本原因：autoFieldService.ts 的 TREATMENT_TYPES 使用舊長碼（chemotherapy/radiation/targetTherapy/interventional）
+  - DB 存的是短碼（chemo/rt/target/intervention），完全比對不到，所以首次治療日始終為空
+  - 修復：TREATMENT_TYPES 加入雙碼支援，同時支援新短碼和舊長碼，以及 rfa/tace/haic
+- **Q2 排序記憶：病人返回不再重置排序**
+  - usePatientsPageStore 加入 sortKeys/setSortKeys 持久化
+  - PatientsPage 的多重排序條件現在跨導覽保持不變
+- **Q3 小選單改為按鈕點選**
+  - 選項 ≤5 個的 select 欄位改為 radio（chip 按鈕）：
+  - HCC BCLC 分期、Child-Pugh 5 項子評分、LC 組織型態、EC 腫瘤位置、PC Grade Group、EMC 術前影像類型
+- **Q4 指標管理 Tab 重新命名（更精確）**
+  - 待補資料 → 待補項目（含欄位缺失 + 指標缺漏）
+  - 達成總覽 → 達成報告（各癌別×指標達成率表格）
+  - 報表匯出 → 資料匯出
 
 ### V6.3.2 (2026-04-04)
 - **癌別欄位盤點與修復**：
