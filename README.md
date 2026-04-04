@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.3**
+**當前版本：V6.3.4**
 
 ## 重要警告
 
@@ -13,6 +13,13 @@
 ---
 
 ## 版本歷史
+
+### V6.3.4 (2026-04-04)
+- **🔴 修復：多癌別指標完全無法計算**
+  - **HCC 肝癌**：HCC-2/HCC-4 的治療判斷（hadTx）只檢查手術+TACE，遺漏 RFA → RFA 病人落出分母，修復加入 rfa events 和 hasRFA
+  - **免疫治療事件代碼錯誤**：getEventsByType(events, 'immuno') ← DB 代碼是 'immunotherapy'，影響 LC/BLC 免疫治療指標
+  - **手術代碼依賴問題**（CRC/EC/LC/BLC）：指標計算依賴 primarySurgeryCode（舊版 ICD 手術代碼），現代系統用事件記錄，改為 fallback 到 surgeryEvents.length > 0
+  - **PC 攝護腺癌**：PSA 現在從 cancerSpecificData.psa / psaValue / patient.psa 三處取值；gleasonScore 優先用 auto-computed 值
 
 ### V6.3.3 (2026-04-04)
 - **Q1 🔴 修復：首次治療日永遠空白**
