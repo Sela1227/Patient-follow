@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.4**
+**當前版本：V6.3.5**
 
 ## 重要警告
 
@@ -13,6 +13,18 @@
 ---
 
 ## 版本歷史
+
+### V6.3.5 (2026-04-04)
+- **三條病人路徑模擬測試 + 修復**：
+  - BC 乳癌（確診→手術→放療）：事件識別、首次治療日、BC-2 指標、auto 欄位計算均正常
+  - HCC 肝癌 RFA（影像確診→無切片→RFA）：HCC-1/HCC-2 指標修復（RFA加入分母），首次治療日正確
+  - PC 攝護腺癌 RT（切片→荷爾蒙→放療）：Gleason auto-compute 正常，但發現 PC-4 cN/cM 比對格式錯誤
+- **🔴 修復：cN/cM 分期比對格式錯誤（影響 PC/EC/多指標）**
+  - 病人存 cN='N0'、cM='M0'（帶前綴），但指標代碼比對 cN==='0'（無前綴）
+  - 新增 normalizeStage() 函式，自動去除 N/M/T 前綴再比對
+  - 修復 PC-4（局部侵犯放療）、EC-4（引導性化放療）等指標
+- **PatientDetailPage TREATMENT_TYPES 補全新碼**：加入 rfa/tace/haic（之前漏掉）
+- **nationalIndicatorService.ts 'immuno' 完全清除**
 
 ### V6.3.4 (2026-04-04)
 - **🔴 修復：多癌別指標完全無法計算**
