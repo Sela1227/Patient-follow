@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.5**
+**當前版本：V6.2.6**
 
 ## 重要警告
 
@@ -13,6 +13,16 @@
 ---
 
 ## 版本歷史
+
+### V6.2.6 (2026-04-04)
+- **🔴 修復：事件類型代碼與指標計算嚴重不匹配**
+  - 根本原因：DB 使用短代碼（chemo/rt/target/intervention），autoFieldService 使用舊長代碼（chemotherapy/radiation/targetTherapy/interventional）
+  - 影響：hasChemo / hasRT / hasTargetTherapy / hasPreopCCRT 等 auto 欄位永遠計算為「否」，指標計算全部錯誤
+  - 修復：autoFieldService 4 個 helper function 改為同時接受新舊代碼（dual-code support 向後相容）
+- **事件篩選頁標統一整合**：
+  - PatientDetailPage 和 IndicatorsPage 的事件篩選選項統一（兩個頁面現在一致）
+  - 新增：近接治療、抽血、回診 篩選選項
+  - 色碼對照表（EV_COLORS/PT_EV_COLORS）統一並擴充：brachytherapy/lab/team_meeting/new_dx/staging 新增色碼
 
 ### V6.2.5 (2026-04-04)
 - **🔴 修復：病人詳情「指標達成摘要」永遠顯示空白**
