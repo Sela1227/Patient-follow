@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.9**
+**當前版本：V6.3.0**
 
 ## 重要警告
 
@@ -13,6 +13,16 @@
 ---
 
 ## 版本歷史
+
+### V6.3.0 (2026-04-04)
+- **🔴 修復：curativeDenominator / curativeNumerator 欄位整合後遺失**
+  - 根本原因：PatientDetailPanel（已刪除）的「基本指標」tab 有這兩個欄位，PatientDetailPage 沒有
+  - 這兩個是指標計算的核心（分母=是否根治性治療，分子=完治狀態），遺失後所有完治率指標永遠計算錯誤
+  - 修復：在 DiagnosisTab Column 3 新增「收案分類 / 完治率」Section：
+    - 個案分類（Class 0/1/2/3）按鈕選擇器
+    - 是否根治性治療（是/否）→ 納入分母
+    - 完治狀態（已完治/未完治）→ 納入分子（僅根治性治療才顯示）
+- **版本跳至 V6.3.0**：PatientDetailPanel 整合完成，病人詳情統一入口里程碑
 
 ### V6.2.9 (2026-04-04)
 - **病人詳情頁統一入口（移除 PatientDetailPanel 重複代碼）**：
