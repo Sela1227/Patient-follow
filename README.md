@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.2.6**
+**當前版本：V6.2.7**
 
 ## 重要警告
 
@@ -13,6 +13,20 @@
 ---
 
 ## 版本歷史
+
+### V6.2.7 (2026-04-04)
+- **測試資料全面重設計（42 位病人，覆蓋所有功能測試）**：
+  - 所有 18 種事件類型都有實例：surgery/chemo/rt/target/immunotherapy/hormone/intervention/rfa/tace/haic/brachytherapy/mdt/team_meeting/tx_plan_confirm/fu/imaging/lab/visit/new_dx/pathology/staging/recurrence
+  - HCC 3 位：RFA（王志豪）、TACE×2+HAIC（陳志強）、新收無治療（吳美華）
+  - HCC Child-Pugh 改用 5 項子分數（cpAscites/cpBilirubin/cpAlbumin/cpPT/cpEncephalopathy）
+  - LC 4 位：EGFR標靶、ALK標靶+化療、PD-L1免疫治療、已結案
+  - CC 1 位有完整 CCRT + 近接治療（brachytherapy × 3）
+  - 工作中心四種觸發都有覆蓋：
+    - 緊急（逾期未完成）：BC02化療追蹤、CRC02術後訪視
+    - 本週待辦：LC01/GC01/CC01/PC01
+    - 需關注（>90天未訪視）：BC03
+    - 新收待建置（30天內無治療）：HCC03/EMC03/BLC03
+    - 失聯（>1年）：HCC02
 
 ### V6.2.6 (2026-04-04)
 - **🔴 修復：事件類型代碼與指標計算嚴重不匹配**
