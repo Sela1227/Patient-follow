@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.3.9**
+**當前版本：V6.4.0**
 
 ## 重要警告
 
@@ -13,6 +13,22 @@
 ---
 
 ## 版本歷史
+
+### V6.4.0 (2026-04-04)
+- **Patient 欄位大清理（刪除 19 個確認無用欄位）**：
+  idNumber, laterality, clinicalStageSystem, ypTNM, hasWashingCytology,
+  rtModality, rtExecutionStatus, targetTherapyDate/Drug, immunotherapyDate/Drug,
+  hormoneTherapyDrug, mdtNumber, hasMdtBeforeTreatment, lastFollowUpDate,
+  lastImagingType, coreMetrics, pivkaII, dre
+  （全部確認在整個 codebase 無任何引用，且已有對應的 cancerSpecificData 或事件記錄替代）
+- **全新測試資料（19 位病人，13 癌別，60 指標完整覆蓋）**：
+  BC01-03（BC-2/3/4）、CC01-02（CC-2/3/4）、CRC01-02（CRC-2/3）
+  EC01（EC-2/4）、EMC01（EMC-1/2/8）、GC01（GC-1/4）
+  HCC01-02（HCC-1/2/4/5）、LC01（LC-1）、OC01（OC-1/5）
+  OVC01（OVC-1/2/3）、PAC01（PAC-1/3/4/5）、PC01-02（PC-2/3/4）、BLC01（BLC-1/2/3）
+  每位病人有完整事件序列，用於驗證指標計算正確性
+- **測試資料格式重寫**：新格式 ALL_TEST_PATIENTS（patient + events 配對）
+  取代舊的 TEST_PATIENTS/TEST_EVENTS 分離格式，更清晰且型別安全
 
 ### V6.3.9 (2026-04-04)
 - **全面重複 code 盤點與清理（~19,500 chars）**：
