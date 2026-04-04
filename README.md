@@ -15,6 +15,19 @@
 ## 版本歷史
 
 ### V6.2.0 (2026-04-04)
+
+**V6.2.0 樣式/結構整理（UI audit）**：
+  - **系統工具頁改版**：從滾動式改為 Tag 系統（備份/同步 / 資料匯出 / 資料庫 / 版本資訊）
+  - **移除重複功能**：刪除 ToolsPage「資料統計」（與工作中心完全重複）
+  - **全頁 h2/h3 → p 標籤**：PatientsPage/IndicatorsPage/PDCAPage/WorkPage/ToolsPage
+  - **全頁 slate-* Tailwind class 清除**（共約 80+ 處）：
+    - MasterDataPage: 35 處 → 0
+    - PatientDetailPage: 27 處 → 0
+    - ToolsPage: 8 處 → 0
+    - WorkCenterPage: 7 處 → 0
+    - PatientsPage: 4 處 → 0
+    - WorkPage/IndicatorsPage: 各 3 處 → 0
+  - 全部改用 CSS vars（--text / --text-secondary / --text-hint / --border / --bg-hover）
 - **流程模擬修正（6項問題）**：
   1. 新增病人：癌別必填驗證，未選擇無法送出
   2. OverviewTab 組織型態：修復 require()（Vite 不支援），改為直接呼叫已匯入的 getHistologyOptions()
@@ -22,6 +35,16 @@
   4. 指標管理 PatientDetailPanel：新增「詳情」按鈕，可直接跳到 PatientDetailPage
   5. 缺漏清單點擊病人：自動切換到「核心測量」Tab（initialTab prop），省去手動切 Tab
   6. 工作中心：新增「新收個案待建置」類型，30天內新收且無任何治療記錄的追蹤中病人
+
+**V6.2.0 補充修正（流程模擬 BC + HCC）**：
+  - hasMammography：改為 type:auto，autoFieldService 自動偵測 imaging 事件標題含「乳房攝影/乳攝/mammograph」
+  - mammographyDate：同步自動抓最近一次乳攝日期
+  - hasSentinelBiopsy：從 type:text 改為 radio（是/否）
+  - HCC 新增 hasHAIC（auto）、hasRT（auto）欄位
+  - DiagnosisTab Column 3 讀取模式：合併 autoFieldService 計算值 + stored 值，依 metrics 順序顯示，auto 欄位標示⚡
+  - InfoRow：新增 hint prop 顯示欄位來源標記
+  - 移除殘留的 require()，改為正式 import computeAutoFields
+  - 移除已過時的 CANCER_FIELD_LABELS 常數（6576 chars）
 - **收案規則（切片確診原則）**：
   - 新增病人選擇癌別後顯示提示框：
     - 非肝癌：🟡「收案須以病理切片確診（請填寫病理確診日）」
