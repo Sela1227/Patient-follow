@@ -84,7 +84,7 @@ icon button   → w-8 h-8 rounded-xl flex items-center justify-center
 
 ---
 
-## 四、當前版本（V6.4.9）
+## 四、當前版本（V6.5.0）
 
 ### 版本歷史摘要（V6.x）
 
@@ -103,7 +103,7 @@ icon button   → w-8 h-8 rounded-xl flex items-center justify-center
 - V6.4.6：選「全部」區間畫面全白修復（dateRange null guard）
 - V6.4.7：改變區間收案人數變但指標達成率不變修復（filteredIndicators 加 dateRange）
 - V6.4.8：指標總覽換區間後分子/分母不更新修復（summaryAggregatedData useMemo deps 錯誤）
-- V6.4.9：收案區間全 tab 顯示；切換無資料年份仍顯示全部癌別
+- V6.5.0：收案區間全 tab 顯示；切換無資料年份仍顯示全部癌別
 
 
 ## 五、關鍵檔案路徑
