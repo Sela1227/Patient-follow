@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.4.1**
+**當前版本：V6.4.2**
 
 ## 重要警告
 
@@ -13,6 +13,19 @@
 ---
 
 ## 版本歷史
+
+### V6.4.2 (2026-04-04)
+- **Q1: 切緣狀態簡化為兩個按鈕（R0 / R1+）**
+  - 原本 4 個下拉選項（R0/R1/R2/Rx）→ 兩個 chip 按鈕
+  - R0（切緣陰性）綠色，R1+（非陰性）紅色，視覺直觀
+  - 顯示模式也同步更新為中文說明
+- **Q2: 攝護腺癌指標（PC-1/2/3/5）修復**
+  - 根本原因：isAdenocarcinoma() 只檢查 morphologyCode（舊欄位，現代病人不填）
+  - 修復：同時檢查 cancerSpecificData.isAdenocarcinoma / histologyType / patient.histology
+  - PC-1（DRE）、PC-2（PSA）、PC-5（根除術）現在可正確計算
+- **Q2: 食道癌指標（EC-1/3/4）修復**
+  - EC-1、EC-3：hasSurgery 已有 primarySurgeryCode fallback（本版確認已生效）
+  - EC-4：isTanyN1_3M0 的 cN 比對改用 normalizeStage，避免 'N1'.includes('1') 誤判
 
 ### V6.4.1 (2026-04-04)
 - **測試資料擴充（19 → 34 位病人）**：
