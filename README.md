@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.4.7**
+**當前版本：V6.4.8**
 
 ## 重要警告
 
@@ -13,6 +13,15 @@
 ---
 
 ## 版本歷史
+
+### V6.4.8 (2026-04-05)
+- **🔴 修復：指標總覽換區間後分子/分母/達成率不更新**
+  - 根本原因：summaryAggregatedData 的 useMemo deps 寫錯
+    - 錯誤：`}, [qmPatients, cancerTypes])`（用無篩選的 qmPatients）
+    - 修復：`}, [filteredQmPatients, cancerTypes])`（用有日期篩選的版本）
+  - React useMemo 只在 deps 變化時重算；qmPatients 是 state（只在 DB 載入時變），
+    filteredQmPatients 才是跟著 dateRange 變的 derived value
+  - 修復後換年份/區間 → filteredQmPatients 變 → useMemo 重算 → 分子分母正確更新
 
 ### V6.4.7 (2026-04-05)
 - **🔴 修復：改變區間後收案人數變但指標達成率沒跟著變**
