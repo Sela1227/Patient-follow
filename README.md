@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.4.5**
+**當前版本：V6.4.6**
 
 ## 重要警告
 
@@ -13,6 +13,15 @@
 ---
 
 ## 版本歷史
+
+### V6.4.6 (2026-04-05)
+- **🔴 修復：指標總覽選「全部」區間時畫面全白**
+  - 根本原因：calcDateRange('all') 回傳 null，但篩選邏輯直接存取 dateRange.start/end → crash
+  - 修復：所有 dateRange.start/end 存取前加 dateRange && null guard
+- **修正：指標總覽現在隨選擇的年份/區間篩選**
+  - 之前：summaryAggregatedData 使用 qmPatients（全部病人，不受篩選影響）
+  - 現在：改用 filteredQmPatients（與其他 tab 一致，跟著日期篩選器走）
+  - useMemo deps 同步更新為 filteredQmPatients
 
 ### V6.4.5 (2026-04-05)
 - **全新測試資料設計（39位病人，確保每個指標分母非零）**
