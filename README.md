@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.5.0**
+**當前版本：V6.5.1**
 
 ## 重要警告
 
@@ -13,6 +13,22 @@
 ---
 
 ## 版本歷史
+
+### V6.5.1 (2026-04-05)
+- **Q1 修復：指標管理匯出按鈕全白（crash）**
+  - 根本原因：dateRange 在選「全部」時為 null，但 exportIndicatorReport / generateEvaluationSummary 型別簽名不允許 null
+  - 修復：ExportTabProps / reportService.ts 全部相關型別加 | null，函數內容加 optional chaining
+- **Q2 工作中心新增 3 個類別**（現在共 11 種 todo 類型）：
+  - 放療超過 8 週（56天仍未完成）→ rt_prolonged（本週待辦）
+  - 化療進行中（任何未完成化療事件）→ chemo_ongoing（需關注）
+  - 術後 150-210 天內無任何排定追蹤事件 → post180_no_visit（需關注）
+- **新增 3 位觸發病人（WC11/12/13）**
+  - WC11 許建宏（LC）：放療進行中第65天（>56天）
+  - WC12 劉大明（CRC）：術後輔助化療進行中
+  - WC13 楊秀蘭（BC）：術後第175天無任何排定追蹤
+- **Q2 說明：為什麼 130 位指標病人不觸發緊急**
+  - 緊急條件：有 pending 事件且 dueDate < today，或今天有 fu 事件
+  - 130 位指標病人的事件全為 isCompleted:true，無 pending+dueDate → 不觸發
 
 ### V6.5.0 (2026-04-05)
 - **全新測試資料（140位病人，每癌10人，橫跨 2024-2026）**
