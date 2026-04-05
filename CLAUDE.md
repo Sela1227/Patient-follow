@@ -84,27 +84,27 @@ icon button   → w-8 h-8 rounded-xl flex items-center justify-center
 
 ---
 
-## 四、當前版本（V6.2.9）
+## 四、當前版本（V6.4.9）
 
-### 重要架構（V6.x）
+### 版本歷史摘要（V6.x）
 
 | 版本 | 關鍵變更 |
 |------|---------|
-| V6.0 | 主背景色調整；RFA/TACE/HAIC 事件類型 |
-| V6.1 | **帳號登入系統**：LoginPage / authService / 帳號管理 / 癌別過濾 |
-| V6.2 | 流程模擬修正 + 指標計算修復 |
-| V6.2.0 | ToolsPage 改 Tab 系統；移除重複資料統計 |
-| V6.2.1 | 待補資料 + 缺漏清單整合；癌別過濾確認 |
-| V6.2.2 | 指標缺漏可收合；Child-Pugh 5項評分；HCC/EC/EMC 重複欄位清除 |
-| V6.2.3 | 死碼清除（8頁面 215K chars）；動態import→靜態；console清理；slate-*清零 |
-| V6.2.4 | 按鈕風格全面統一；btn-danger新增；圖示按鈕 rounded-xl |
-| V6.2.5 | 🔴 CANCER_CODE_MAP 中文 key 被誤清空（指標達成摘要全空）修復 |
-| V6.2.6 | 🔴 事件代碼不匹配（chemo/rt/target/intervention vs chemotherapy…）修復 |
-| V6.2.7 | 測試資料全面重設計（42位，覆蓋所有事件類型） |
-| V6.2.8 | WorkCenter 病人點選修復；影像種類整合 EventFormModal |
-| V6.2.9 | **PatientDetailPanel 移除（28K 重複代碼）；病人詳情統一入口** |
+| V6.0-6.2 | 帳號登入、RFA/TACE、流程修正、指標修復 |
+| V6.3.0-6.3.9 | PatientDetailPage 7-tab 整合；欄位清理；重複 code 清除（~19,500 chars）；指標計算多癌別修復 |
+| V6.4.0-6.4.9 | Patient 欄位清理（刪19個 dead fields）；全新測試資料（39位，13癌別×60指標）；指標總覽 tab；UI bugfixes |
 
----
+### V6.4.x 重要修復
+- V6.4.0：Patient interface 刪除 19 個確認 dead 欄位
+- V6.4.2：切緣狀態簡化 R0/R1+；PC isAdenocarcinoma 修復；EC-4 cN 比對修復
+- V6.4.3：指標缺漏 → 按鈕修復（空 callback）；新增「指標總覽」tab
+- V6.4.4：指標總覽無資料修復（summaryAggregatedData 不受日期篩選；測試資料日期壓縮至 2026）
+- V6.4.5：測試資料重新設計（39位，確保每個指標分母非零）
+- V6.4.6：選「全部」區間畫面全白修復（dateRange null guard）
+- V6.4.7：改變區間收案人數變但指標達成率不變修復（filteredIndicators 加 dateRange）
+- V6.4.8：指標總覽換區間後分子/分母不更新修復（summaryAggregatedData useMemo deps 錯誤）
+- V6.4.9：收案區間全 tab 顯示；切換無資料年份仍顯示全部癌別
+
 
 ## 五、關鍵檔案路徑
 
