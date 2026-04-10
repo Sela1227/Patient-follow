@@ -84,34 +84,67 @@ icon button   → w-8 h-8 rounded-xl flex items-center justify-center
 
 ---
 
-## 四、當前版本（V6.5.4）
+## 四、當前版本（V6.5.7）
 
 ### 版本歷史摘要（V6.x）
 
 | 版本 | 關鍵變更 |
 |------|---------|
 | V6.0-6.2 | 帳號登入、RFA/TACE、流程修正、指標修復 |
-| V6.3.0-6.3.9 | PatientDetailPage 7-tab 整合；欄位清理；重複 code 清除（~19,500 chars）；指標計算多癌別修復 |
-| V6.4.0-6.4.9 | Patient 欄位清理（刪19個 dead fields）；全新測試資料（39位，13癌別×60指標）；指標總覽 tab；UI bugfixes |
+| V6.3.x | PatientDetailPage 7-tab；欄位清理；死碼清除 ~19,500 chars |
+| V6.4.x | 欄位清理；測試資料 140 位；指標總覽 tab；一系列 dateRange null fix |
+| V6.5.0 | 測試資料全面重設計（140位，每癌10人，2024-2026，四種指標情境） |
+| V6.5.1 | 匯出按鈕全白修復；工作中心新增 3 類別（rt_prolonged/chemo_ongoing/post180） |
+| V6.5.2 | 資料匯出頁強化：統計摘要、mini 進度條、色彩按鈕、一鍵匯出 |
+| V6.5.3 | 資料匯出改為預覽後匯出（點選展開網頁預覽，確認後才下載） |
+| V6.5.4 | **Phase 1 MDT**：LY 第14癌別、多重癌 tag、Event MDT flags、DB v6（meetings/meetingCases） |
+| V6.5.5 | **Phase 2 MDT**：MDT 管理頁（月份行事曆+建立會議 Modal） |
+| V6.5.6 | **Phase 3 MDT**：會議室頁（5個Section、病人自動名單、討論填寫、結論寫回事件卡） |
+| V6.5.7 | **Phase 4 MDT**：PPTX 簡報 + DOCX 會議記錄 + LINE 通知文字產出 |
 
-### V6.4.x 重要修復
-- V6.4.0：Patient interface 刪除 19 個確認 dead 欄位
-- V6.4.2：切緣狀態簡化 R0/R1+；PC isAdenocarcinoma 修復；EC-4 cN 比對修復
-- V6.4.3：指標缺漏 → 按鈕修復（空 callback）；新增「指標總覽」tab
-- V6.4.4：指標總覽無資料修復（summaryAggregatedData 不受日期篩選；測試資料日期壓縮至 2026）
-- V6.4.5：測試資料重新設計（39位，確保每個指標分母非零）
-- V6.4.6：選「全部」區間畫面全白修復（dateRange null guard）
-- V6.4.7：改變區間收案人數變但指標達成率不變修復（filteredIndicators 加 dateRange）
-- V6.4.8：指標總覽換區間後分子/分母不更新修復（summaryAggregatedData useMemo deps 錯誤）
-- V6.5.4：收案區間全 tab 顯示；切換無資料年份仍顯示全部癌別
+### MDT 整合架構（V6.5.4–V6.5.7）
+
+**核心設計：** 追蹤系統為主系統，MDT 為內建功能模組，舊 MDT HTML 退休
+
+**癌別 → MDT 對應：**
+```
+BC           → 乳癌     → 郭美伶  → 每月第3個週四 07:30
+LC, EC       → 胸腔癌   → 郭美伶  → 每月第3個週四 12:30
+OC, LY       → 頭頸癌   → 林伯儒/楊靜雯 → 每月第3個週四 12:30
+CRC, GC      → 消化道癌 → 楊靜雯  → 每月第1個週四 07:30
+HCC, PAC     → 肝膽胰癌 → 林伯儒  → 每月第1個週四 07:30
+PC, BLC      → 泌尿道癌 → 林伯儒  → 每月第2個週三 07:30
+CC, OVC, EMC → 婦癌     → 楊靜雯  → 每月第2個週三 12:30
+```
+
+**MDT 會議 5 個 Section：**
+```
+Section 1  新個案討論      ← 上次同癌別MDT後新收，自動列出
+Section 2  前期追蹤        ← 上次有結論待追蹤，自動列出
+Section 3  必要提報事件    ← 系統自動偵測基準2.4八類
+Section 4  醫療小組        ← 個管師回覆意見記錄（不整合院內系統）
+Section 5  特殊議程        ← 手動搜尋加入
+```
+
+**必要提報自動偵測（基準2.4）：**
+- staging：clinicalStage 為空但已有治療事件
+- second_primary：同 mrn 多筆記錄
+- age85：年齡 ≥ 85 歲
+- neoadjuvant：有 isNeoadjuvant 事件
+- positive_margin：caseClass=1 且 surgicalMargin=R1
+- guideline/complex：靠 Event.requiresMDT flag 手動標記
+
+**新增 DB 表（v6）：**
+- meetings：mdtGroup, date, time, location, zoom, contact, status
+- meetingCases：meetingId, patientId, sectionType, discussionFields, conclusion
 
 
 ## 五、關鍵檔案路徑
 
 ```
 src/
-├── pages/（11個）
-│   ├── PatientsPage.tsx          視覺參考標準
+├── pages/（13 pages）
+│   ├── MDTPage.tsx          視覺參考標準
 │   ├── PatientDetailPage.tsx     病人詳情（5 Tab：總覽/診斷/事件/指標/追蹤）★唯一入口
 │   ├── IndicatorsPage.tsx        指標管理（待補資料+缺漏整合，4個視圖）
 │   ├── WorkCenterPage.tsx        工作中心
@@ -135,7 +168,7 @@ src/
 │   └── ...
 │
 ├── db/
-│   ├── index.ts                  Dexie DB Schema v5
+│   ├── index.ts                  Dexie DB Schema v6（含 meetings/meetingCases）
 │   └── testData.ts               42位測試病人（全事件類型覆蓋）
 │
 └── stores/index.ts               Zustand stores
