@@ -2,7 +2,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.5.9**
+**當前版本：V6.6.0**
 
 ## 重要警告
 
@@ -13,6 +13,13 @@
 ---
 
 ## 版本歷史
+
+### V6.6.0 (2026-04-10)
+- **修復：無法重置預載資料**
+  - 根本原因：重置後呼叫 seedDefaultData() 可能因 DB schema 狀態異常而失敗，且失敗不顯示細節
+  - 修復：重置成功後自動重新載入頁面（1.2秒後 window.location.reload()），確保 DB 從乾淨狀態初始化
+- **修復：deprecated meta tag 警告**
+  - 新增 mobile-web-app-capable 取代已棄用的 apple-mobile-web-app-capable
 
 ### V6.5.9 (2026-04-10)
 - **修復：測試資料載入時沒有建立 MDT 會議記錄**
