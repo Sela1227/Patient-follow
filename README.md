@@ -1,3 +1,11 @@
+### V6.6.3 (2026-04-13)
+- **修復：自動重建資料庫失敗（NotFoundError 第二次）**
+  - 根本原因：Dexie 實例在 delete() 後無法直接重新 open()
+  - 改用原生 indexedDB.deleteDatabase('CaseManagerDB') 刪除
+  - 刪除成功後呼叫 window.location.reload() 重新載入
+  - 頁面重新載入後從乾淨狀態初始化，問題徹底解決
+- **版本號記錄完整化**
+
 ### V6.6.2 (2026-04-13)
 - **🔴 修復：DB 開啟失敗（資料庫初始化崩潰）**
   - 根本原因：V6.5.4 插入 v6 schema 時，意外截斷了 v5 的 stores()，導致 v5 只剩 users 一張表
@@ -15,7 +23,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.6.2**
+**當前版本：V6.6.3**
 
 ## 重要警告
 
@@ -26,6 +34,14 @@
 ---
 
 ## 版本歷史
+
+### V6.6.3 (2026-04-13)
+- **修復：自動重建資料庫失敗（NotFoundError 第二次）**
+  - 根本原因：Dexie 實例在 delete() 後無法直接重新 open()
+  - 改用原生 indexedDB.deleteDatabase('CaseManagerDB') 刪除
+  - 刪除成功後呼叫 window.location.reload() 重新載入
+  - 頁面重新載入後從乾淨狀態初始化，問題徹底解決
+- **版本號記錄完整化**
 
 ### V6.6.2 (2026-04-10)
 - **新增兩個預設個管師帳號**
