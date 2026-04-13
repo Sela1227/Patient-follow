@@ -1,3 +1,11 @@
+### V6.6.4 (2026-04-13)
+- **修復：首頁無限重載迴圈**
+  - 根本原因：seedDefaultData 的 transaction 未包含 meetings/meetingCases 兩張表
+    - 存取未列入 transaction 的 table → 拋出 objectStore not found
+    - 被誤判為 schema 損壞 → 觸發 reload → 再次出錯 → 無限迴圈
+  - 修復1：transaction table list 補上 db.meetings / db.meetingCases / db.users
+  - 修復2：sessionStorage 防護（cm_db_recovery_v6）確保修復最多只嘗試一次
+
 ### V6.6.3 (2026-04-13)
 - **修復：自動重建資料庫失敗（NotFoundError 第二次）**
   - 根本原因：Dexie 實例在 delete() 後無法直接重新 open()
@@ -23,7 +31,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.6.3**
+**當前版本：V6.6.4**
 
 ## 重要警告
 
@@ -34,6 +42,14 @@
 ---
 
 ## 版本歷史
+
+### V6.6.4 (2026-04-13)
+- **修復：首頁無限重載迴圈**
+  - 根本原因：seedDefaultData 的 transaction 未包含 meetings/meetingCases 兩張表
+    - 存取未列入 transaction 的 table → 拋出 objectStore not found
+    - 被誤判為 schema 損壞 → 觸發 reload → 再次出錯 → 無限迴圈
+  - 修復1：transaction table list 補上 db.meetings / db.meetingCases / db.users
+  - 修復2：sessionStorage 防護（cm_db_recovery_v6）確保修復最多只嘗試一次
 
 ### V6.6.3 (2026-04-13)
 - **修復：自動重建資料庫失敗（NotFoundError 第二次）**
