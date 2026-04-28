@@ -1,3 +1,26 @@
+### V6.8.0 (2026-04-28) — 全面清查與整理
+- **DB 升版到 v7（強化索引）**
+  - patients 新增索引：initialDiagnosisDate（MDT 新個案查詢）、cancerSequence（多重癌）
+  - events 新增索引：requiresMDT、mdtMeetingId（MDT 整合查詢最佳化）
+  - sessionStorage recovery key 更新為 cm_db_recovery_v7
+- **會議地點對齊實際地點（MDT_master.json）**
+  - 七個標準地點：彰濱-1F 人文藝術館會議室 / 人文會議室 / 3樓甲狀腺 / 7F愛書人 / 8樓圓桌
+  - MDTPage 建立會議時自動帶入對應地點（從 MDT_GROUP_CONFIG.location）
+  - 新增 ensureMeetingLocationsMigration()：自動補入新地點名稱
+- **TestData 修正**
+  - TEST_MEETINGS 地點改用正確地名
+  - 移除 undefined as any 語法
+- **型別修正**
+  - Meeting.mdtGroup 說明加入血液淋巴癌
+  - Department / MeetingLocation 新增選用 timestamps 欄位
+
+### V6.7.2 (2026-04-28)
+- **修復：科別/醫師更新無法呈現在舊資料（migration 機制）**
+  - 根本原因：seedDefaultData 只在 DB 完全空白時執行，已有資料的舊版本不會重新載入主檔
+  - 新增 ensureDeptPhysicianMigration()：每次啟動時逐一確認每個科別和醫師是否存在，不存在才新增
+  - initDatabase 啟動流程：seedDefaultData → ensureNewEventTypes → ensureDeptPhysicianMigration
+  - 換版後重新整理頁面，影像診斷科/核醫科/病理科及所有新增醫師自動補入
+
 ### V6.7.1 (2026-04-28)
 - **更新科別與醫師主檔（15科，共 38 位醫師）**
   - 新增 3 個科別：影像診斷科（李唯揚、張哲維、葉偉成、蔡秉樺）、核醫科（侯柏年）、病理科（劉奕祥、賴義雄、鄧呂壕）
@@ -73,7 +96,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.7.1**
+**當前版本：V6.8.0**
 
 ## 重要警告
 
@@ -84,6 +107,29 @@
 ---
 
 ## 版本歷史
+
+### V6.8.0 (2026-04-28) — 全面清查與整理
+- **DB 升版到 v7（強化索引）**
+  - patients 新增索引：initialDiagnosisDate（MDT 新個案查詢）、cancerSequence（多重癌）
+  - events 新增索引：requiresMDT、mdtMeetingId（MDT 整合查詢最佳化）
+  - sessionStorage recovery key 更新為 cm_db_recovery_v7
+- **會議地點對齊實際地點（MDT_master.json）**
+  - 七個標準地點：彰濱-1F 人文藝術館會議室 / 人文會議室 / 3樓甲狀腺 / 7F愛書人 / 8樓圓桌
+  - MDTPage 建立會議時自動帶入對應地點（從 MDT_GROUP_CONFIG.location）
+  - 新增 ensureMeetingLocationsMigration()：自動補入新地點名稱
+- **TestData 修正**
+  - TEST_MEETINGS 地點改用正確地名
+  - 移除 undefined as any 語法
+- **型別修正**
+  - Meeting.mdtGroup 說明加入血液淋巴癌
+  - Department / MeetingLocation 新增選用 timestamps 欄位
+
+### V6.7.2 (2026-04-28)
+- **修復：科別/醫師更新無法呈現在舊資料（migration 機制）**
+  - 根本原因：seedDefaultData 只在 DB 完全空白時執行，已有資料的舊版本不會重新載入主檔
+  - 新增 ensureDeptPhysicianMigration()：每次啟動時逐一確認每個科別和醫師是否存在，不存在才新增
+  - initDatabase 啟動流程：seedDefaultData → ensureNewEventTypes → ensureDeptPhysicianMigration
+  - 換版後重新整理頁面，影像診斷科/核醫科/病理科及所有新增醫師自動補入
 
 ### V6.7.1 (2026-04-28)
 - **更新科別與醫師主檔（15科，共 38 位醫師）**
