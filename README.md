@@ -1,3 +1,15 @@
+### V6.7.0 (2026-04-27)
+- **Phase 1 高優先修正**
+  - 🔴 MDT 完成會議結論寫回修正：除了新增結論事件卡，現在會同步把病人有 requiresMDT=true 且未討論的事件卡標記為 mdtDiscussed=true
+  - 完成會議 toast 訊息改為顯示實際結論數量（N 位病人結論已寫回）
+  - 多重癌 tag 新增至 PatientDetailPage 病人頁頭，同病歷號的其他癌別記錄可點擊跳轉
+
+- **Phase 2 中優先強化**
+  - MDT 統計頁（新 tab）：總場次/討論個案/有結論/必要提報四格統計、各癌別群組討論量、每月趨勢橫條圖、必要提報類別分布
+
+- **Phase 3 低優先清理**
+  - ImportPage 設計系統對齊：全面替換 bg-white/text-green-*/text-blue-*/rounded-lg 等 28 處違規，改用 CSS vars 和語義色
+
 ### V6.6.6 (2026-04-13)
 - **修復：換版後不需重置資料庫也能登入（帳號 migration）**
   - 根本原因：ensureDefaultAdmin 只檢查 users 表是否有任何資料，有就跳過
@@ -46,7 +58,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.6.6**
+**當前版本：V6.7.0**
 
 ## 重要警告
 
@@ -57,6 +69,18 @@
 ---
 
 ## 版本歷史
+
+### V6.7.0 (2026-04-27)
+- **Phase 1 高優先修正**
+  - 🔴 MDT 完成會議結論寫回修正：除了新增結論事件卡，現在會同步把病人有 requiresMDT=true 且未討論的事件卡標記為 mdtDiscussed=true
+  - 完成會議 toast 訊息改為顯示實際結論數量（N 位病人結論已寫回）
+  - 多重癌 tag 新增至 PatientDetailPage 病人頁頭，同病歷號的其他癌別記錄可點擊跳轉
+
+- **Phase 2 中優先強化**
+  - MDT 統計頁（新 tab）：總場次/討論個案/有結論/必要提報四格統計、各癌別群組討論量、每月趨勢橫條圖、必要提報類別分布
+
+- **Phase 3 低優先清理**
+  - ImportPage 設計系統對齊：全面替換 bg-white/text-green-*/text-blue-*/rounded-lg 等 28 處違規，改用 CSS vars 和語義色
 
 ### V6.6.6 (2026-04-13)
 - **修復：換版後不需重置資料庫也能登入（帳號 migration）**
