@@ -1,3 +1,16 @@
+### V6.9.2 (2026-04-29) — MDT Phase 3：HTML 投影片 + 修復 Copy icon
+- **修復：進入會議白頁（Copy is not defined）**
+  - Copy 和 BarChart2 icon 未正確加入 lucide-react import
+- **HTML 投影片產出（整合自 MDT V4.6.2 genHTMLSlides）**
+  - 新增「HTML」按鈕於會議室 Header 產出區
+  - 產出完整的 .html 檔案，瀏覽器直接開啟即可播放
+  - 支援鍵盤翻頁（← →、Space、Home、End）、全螢幕（F）
+  - 投影片結構：封面→各 Section 封面→每位病人一頁
+  - 每頁包含：病歷號/姓名/年齡性別、分期、影像/病理/治療摘要、討論要點/結論/後續追蹤
+  - 自動套用所選配色主題（5種主題與 PPTX 共用）
+  - 頂部進度條、底部導覽列（上一頁/下一頁/全螢幕按鈕）
+  - 民國年日期格式；病人姓名自動遮蔽（王○明）
+
 ### V6.9.1 (2026-04-28) — MDT Phase 2：PPTX 5種配色主題
 - **PPTX 配色主題（整合自 MDT V4.6.0 的 HTML_THEMES）**
   - 5種主題：彰濱經典 / 暖陽 / 森林 / 薰衣草 / 高對比（列印友善）
@@ -117,7 +130,7 @@
 
 基於 React + TypeScript + IndexedDB 的個管病患追蹤系統，支援國健署 13 癌診療核心測量指標。
 
-**當前版本：V6.9.1**
+**當前版本：V6.9.2**
 
 ## 重要警告
 
@@ -128,6 +141,19 @@
 ---
 
 ## 版本歷史
+
+### V6.9.2 (2026-04-29) — MDT Phase 3：HTML 投影片 + 修復 Copy icon
+- **修復：進入會議白頁（Copy is not defined）**
+  - Copy 和 BarChart2 icon 未正確加入 lucide-react import
+- **HTML 投影片產出（整合自 MDT V4.6.2 genHTMLSlides）**
+  - 新增「HTML」按鈕於會議室 Header 產出區
+  - 產出完整的 .html 檔案，瀏覽器直接開啟即可播放
+  - 支援鍵盤翻頁（← →、Space、Home、End）、全螢幕（F）
+  - 投影片結構：封面→各 Section 封面→每位病人一頁
+  - 每頁包含：病歷號/姓名/年齡性別、分期、影像/病理/治療摘要、討論要點/結論/後續追蹤
+  - 自動套用所選配色主題（5種主題與 PPTX 共用）
+  - 頂部進度條、底部導覽列（上一頁/下一頁/全螢幕按鈕）
+  - 民國年日期格式；病人姓名自動遮蔽（王○明）
 
 ### V6.9.1 (2026-04-28) — MDT Phase 2：PPTX 5種配色主題
 - **PPTX 配色主題（整合自 MDT V4.6.0 的 HTML_THEMES）**
