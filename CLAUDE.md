@@ -312,10 +312,17 @@ sed -i "s/APP_VERSION = '[0-9.]*'/APP_VERSION = '${VERSION}'/" src/version.ts
 
 # 更新 README.md 版本記錄（手動）
 
+# 更新說明書版本號（自動，不需手動）
+TODAY=$(date +%Y-%m-%d)
+sed -i "s/> 版本 V[0-9.]*/> 版本 V${VERSION}/" 功能使用說明書.md
+sed -i "s/| 更新日期 [0-9-]*/| 更新日期 ${TODAY}/" 功能使用說明書.md
+
 # Build
 rm -rf dist && npm run build
 cp public/logo.jpg dist/ && cp public/manifest.json dist/
 cp README.md dist/ && cp CLAUDE.md dist/
+cp 功能使用說明書.md dist/  # 每版必備，使用者快速上手文件
+cp 使用說明書.md dist/   # ⚠️ 每版必須附，說明書不存在就不能打包
 
 # 佈署版
 cd dist && zip -r /mnt/user-data/outputs/Patient-follow-V${VERSION}.zip .
@@ -332,7 +339,20 @@ cd /tmp && rm -rf src_tmp
 
 ---
 
+## 十一-b、打包前必做（功能說明書）
+
+每次打包前先更新 `使用說明書.md`（放在專案根目錄）：
+- 新功能 → 加到對應章節
+- 移除功能 → 刪除對應說明
+- 打包時一起複製進 dist/
+
+說明書格式：讓個管師（非工程師）看得懂，不寫程式術語，只寫操作步驟。
+
+---
+
 ## 十二、煙霧測試（每次升版必跑）
+
+> ⚠️ **每版打包前必須更新 `功能使用說明書.md`**，說明本版新功能操作方式，打包時一併放進 dist/。
 
 ```bash
 cd /home/claude/case-manager-web
