@@ -314,14 +314,14 @@ sed -i "s/APP_VERSION = '[0-9.]*'/APP_VERSION = '${VERSION}'/" src/version.ts
 
 # 更新說明書版本號（自動，不需手動）
 TODAY=$(date +%Y-%m-%d)
-sed -i "s/> 版本 V[0-9.]*/> 版本 V${VERSION}/" 功能使用說明書.md
-sed -i "s/| 更新日期 [0-9-]*/| 更新日期 ${TODAY}/" 功能使用說明書.md
+sed -i "s/> 版本 V[0-9.]*/> 版本 V${VERSION}/" USER_GUIDE.md
+sed -i "s/| 更新日期 [0-9-]*/| 更新日期 ${TODAY}/" USER_GUIDE.md
 
 # Build
 rm -rf dist && npm run build
 cp public/logo.jpg dist/ && cp public/manifest.json dist/
 cp README.md dist/ && cp CLAUDE.md dist/
-cp 功能使用說明書.md dist/  # 每版必備，使用者快速上手文件
+cp USER_GUIDE.md dist/  # 每版必備，使用者快速上手文件
 cp 使用說明書.md dist/   # ⚠️ 每版必須附，說明書不存在就不能打包
 
 # 佈署版
@@ -352,7 +352,7 @@ cd /tmp && rm -rf src_tmp
 
 ## 十二、煙霧測試（每次升版必跑）
 
-> ⚠️ **每版打包前必須更新 `功能使用說明書.md`**，說明本版新功能操作方式，打包時一併放進 dist/。
+> ⚠️ **每版打包前必須更新 `USER_GUIDE.md`**，說明本版新功能操作方式，打包時一併放進 dist/。
 
 ```bash
 cd /home/claude/case-manager-web
