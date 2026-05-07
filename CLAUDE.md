@@ -1,12 +1,25 @@
 # CLAUDE.md — 彰濱癌症個管系統 開發交接文件
 > 給 Claude 讀的。讀完直接動手，不需要問問題。
-> 每次打包更新此檔。版本完整歷程在 README.md。
+> 每次打包更新此檔。版本完整歷程在 README.OLD.md。
+
+---
+
+## ⚠️ 給同時拿到 SELA Starter Kit 的 Claude
+
+如果這個對話除了本專案外**還上傳了 SELA-Starter-Kit zip**：
+
+- **這是改現有專案，不是開新專案。** 走 Kit `CLAUDE.md` §2「改現有專案」流程，不要走 §5「開新專案 SOP」、不要套 `templates/CLAUDE-template.md`。
+- **以本檔為主，Kit 為輔。** 本檔的「踩過的坑」與「業務對映表」是這專案的單一真相；Kit 的 `cross-project-pitfalls.md` 只在你想加新坑時參考，不要拿來覆蓋本檔的編號。
+- **配色除了首次生成外，對齊換色要先問。** 本專案實際用 `#5B8FB9`（鋼藍），Kit 預設醫療系統用 `#5A7A8B`（霧藍）— 兩者視覺幾乎不可分但已通過個管師驗證。**未經 SELA 同意，不要為了對齊 Kit 而改主色或派生色**。新增 UI 元素時用既有 CSS 變數（見 `DESIGN_SYSTEM.md`），不另起新色。
+- **logo 永遠橘 + 白。** 這條跟 Kit 一致，沒例外。本專案的 logo 已換成 Kit 套組（`public/favicon/` + `src/assets/sela.svg`）。
+- **版號規則照 Kit §7：** 三位、逢十進位。修 bug → c+1；加功能 → b+1; c=0；技術棧/資料結構大改 → a+1。
+- **部署檔命名跟 Kit SPEC §12.4 預設不同。** 本專案已 build 的 dist zip 才是部署主角，用**無後綴的乾淨檔名**（`Patient follow V<x>.zip`）；source zip 加 `-source` 後綴當救命備份。Kit 預設「`-source` 給 Git Pusher 觸發 Actions build」的流程在本案不適用——本專案直接用 dist 推 GitHub Pages，不依賴 GitHub Actions。同 Sela 給的指示：「**部署檔後面不要加 dist**」。
 
 ---
 
 ## 一、系統是什麼
 
-**彰濱秀傳癌症中心個管追蹤系統**（Patient Follow-up System）
+**彰濱秀傳癌症中心個管追蹤系統**（Patient follow）
 
 - 台灣彰濱秀傳醫院癌症個管師日常使用
 - 核心功能：追蹤14種癌別病人治療進度、計算國健署115年強制申報60項品質指標、MDT多專科會議管理
@@ -86,23 +99,18 @@ style={{ background: 'rgba(91,143,185,0.15)', color: '#4A7A9E' }}
 
 ---
 
-## 四、當前版本（V6.6.6）
+## 四、當前版本（V7.0.0）
 
 | 版本 | 關鍵變更 |
 |------|---------|
-| V6.5.4 | Phase 1 MDT：LY第14癌別、多重癌tag、Event MDT flags、DB v6 |
-| V6.5.5 | Phase 2 MDT：月份行事曆＋建立會議Modal |
-| V6.5.6 | Phase 3 MDT：會議室（5個Section、病人自動名單、討論填寫、結論寫回） |
-| V6.5.7 | Phase 4 MDT：PPTX＋DOCX＋LINE通知產出 |
-| V6.5.8 | 測試資料重設計（MRN改T-開頭）、刪除功能真正有效 |
-| V6.5.9 | 修復：seedDefaultData未載入TEST_MEETINGS |
-| V6.6.0 | 修復：重置預載資料→成功後自動reload；deprecated meta tag |
-| V6.6.1 | 🔴 修復：DB Schema v6缺少users表→密碼錯誤無法登入 |
-| V6.6.2 | 修復：v5 schema截斷（只剩users一張表）；帳號改為14002/KAO、11750/YANG |
-| V6.6.3 | 修復：自動重建用原生indexedDB.deleteDatabase+reload |
-| V6.6.4 | 修復：transaction未列meetings/meetingCases→無限reload迴圈 |
-| V6.6.5 | 帳號調整（無重大功能變更） |
-| V6.6.6 | 修復：ensureDefaultAdmin改為per-account檢查，換版不需重置DB |
+| V6.5.4 ~ V6.5.9 | MDT 四 Phase 全部落地（LY 第 14 癌別、行事曆、會議室、PPTX/DOCX/LINE） |
+| V6.6.0 ~ V6.6.5 | DB 連環修復（schema 截斷、users 被刪、無限 reload、帳號補建邏輯） |
+| V6.9.0 | 整合 MDT V4.6.2：複製會議、會後填寫 Panel、followNext toggle |
+| V6.9.1 | PPTX 5 種配色主題（色票 UI） |
+| V6.9.2 | HTML 投影片（鍵盤翻頁、全螢幕）；修 Copy icon 白頁 |
+| V6.9.3 | USER_GUIDE.md（英文檔名）；說明書版本號自動同步；ensureDefaultAdmin 改 per-account |
+| V6.9.4 | Hotfix：清掉 14 個 TS 錯誤；HTML 投影片 themeId 終於生效；ToolsPage 科別同步補完 |
+| V7.0.0 | 對齊 SELA Starter Kit V1.7.0：SELA logo 完整套組、.gitignore、新 README、雙版本交付 |
 
 ---
 
@@ -279,6 +287,35 @@ this.version(7).stores({
 - 原因：loadTestData() 有寫 MDT 邏輯，但 seedDefaultData 沒呼叫它；改寫後直接在 seedDefaultData 內建立 meetings
 - 做法：MDT 會議直接在 seedDefaultData 的 transaction 內建立，不要另一個函數
 
+**#11 MDT_GROUP_CONFIG 新增欄位後 TypeScript 報錯**
+- 症狀：新增 location/members/coMeeting 到 MDT_GROUP_CONFIG，散落各頁面的 GROUP_COLORS 沒有新增血液淋巴癌
+- 原因：LY 從頭頸癌獨立為血液淋巴癌群組，但 MDTPage/MDTMeetingPage 的 GROUP_COLORS map 沒同步加
+- 做法：每次新增 MDT 群組，搜尋所有 GROUP_COLORS 定義一起更新
+
+**#12 lucide-react icon import 沒有加入，執行期崩潰**
+- 症狀：進入 MDT 會議室白頁，Console 顯示 `Copy is not defined`
+- 原因：import 指令的替換在前一個 replace 裡漏掉了（只改了一個 import block，另一個沒改）
+- 做法：使用 icon 前先確認已在 import 區塊；grep 確認只有一個 lucide import block
+
+**#13 中文檔名在 ZIP 下載後變亂碼**
+- 症狀：使用說明書.md 下載後顯示亂碼
+- 做法：打包進 dist 的檔案一律用英文檔名，說明書改為 USER_GUIDE.md
+
+**#14 跨 service 函數簽名加參數但內部沒接（TS6133 unused param）**
+- 症狀：HTML 投影片的 themeId 接住了卻完全沒影響輸出，PPTX 換主題在 HTML 沒生效
+- 原因：早先版本只在 generatePPTX 把 themeId 接進去，generateHTMLSlides 簽名複製過去但內部仍呼叫 getPptxTheme()（讀 localStorage），呼叫端傳入的 themeId 形同被忽略
+- 做法：API 加參數時要走完「接住 → 用上 → 端到端驗證」三步；TS6133 表示 declared but never read，寧可看到報錯也不要 silent ignore
+
+**#15 v6.9.3 source 內含 14 個 TS error 還能打包出去**
+- 症狀：source zip 裡 npm run build 直接 fail，但 deploy zip 卻是好的
+- 原因：上版打包時可能跳過 tsc step（只跑 vite build），讓 dist 出去但 source 是壞的
+- 做法：每次 release 前 grep `error TS`，有任何一個就視為 release blocker；不要走 vite build only 的捷徑
+
+**#16 中文/英文檔名說明書雙份手動維護導致分歧**
+- 症狀：V6.9.3 同時存在 `USER_GUIDE.md` / `使用說明書.md` / `功能使用說明書.md` 三份說明書，內容互相 5~120 行不同步，每次升版要改三份且常忘
+- 原因：早期為避免坑 #13（中文檔名 ZIP 亂碼）建了 `USER_GUIDE.md` 但沒明寫「這是複本」，後續手動雙份維護分歧；又有歷史遺留 `功能使用說明書.md` 沒清掉
+- 做法：V7.0.0 立規矩 — `使用說明書.md` 是主版（給個管師看的中文檔名），`USER_GUIDE.md` 是 `cp` 出來的英文檔名複本。打包前先改主版再 `cp`，**不要分別維護**。歷史遺留的 `功能使用說明書.md` 已刪除
+
 ---
 
 ## 十、導覽系統
@@ -303,36 +340,71 @@ currentPage === 'patients'                      → PatientsPage
 
 ## 十一、打包指令（複製貼上執行）
 
+> **Kit 對齊：** zip 名稱用空格分隔，不用連字號；雙 zip 交付。
+> **命名約定（本專案）：**
+> - 部署版：`<專案名稱> V<a>.<b>.<c>.zip`（**無 `-dist` 後綴**，這是 Sela 給 Git Pusher 部署用的標準名）
+> - Source 版：`<專案名稱> V<a>.<b>.<c>-source.zip`（保留 `-source` 後綴以區分）
+
 ```bash
-VERSION=6.x.x
+VERSION=7.x.x
+PROJECT_NAME="Patient follow"
 cd /home/claude/case-manager-web
 
 # 更新版本號
 sed -i "s/APP_VERSION = '[0-9.]*'/APP_VERSION = '${VERSION}'/" src/version.ts
 
-# 更新 README.md 版本記錄（手動）
+# 更新 README.OLD.md 版本記錄（手動加新一段在最上面）
+
+# 更新說明書版本號（自動，不需手動）
+TODAY=$(date +%Y-%m-%d)
+sed -i "s/^## 功能使用說明書 V[0-9.]*/## 功能使用說明書 V${VERSION}/" 使用說明書.md
+sed -i "s/^> 更新日期：[0-9-]*/> 更新日期：${TODAY}/" 使用說明書.md
+# USER_GUIDE.md 是 使用說明書.md 的英文檔名複本，cp 同步即可
+cp 使用說明書.md USER_GUIDE.md
 
 # Build
 rm -rf dist && npm run build
-cp public/logo.jpg dist/ && cp public/manifest.json dist/
+# Vite 會自動處理 public/ 下所有檔案（含 favicon/、manifest.json）
 cp README.md dist/ && cp CLAUDE.md dist/
+cp USER_GUIDE.md dist/  # 給同仁看的快速上手文件（英文檔名版）
+cp 使用說明書.md dist/  # ⚠️ 主版本，每版必須附
 
-# 佈署版
-cd dist && zip -r /mnt/user-data/outputs/Patient-follow-V${VERSION}.zip .
+# 部署版（Git Pusher 用，無 -dist 後綴）
+cd dist && zip -r "/mnt/user-data/outputs/${PROJECT_NAME} V${VERSION}.zip" .
+cd ..
 
-# Source 版
+# Source 版（救命備份用，加 -source 後綴）
 cd /tmp && rm -rf src_tmp && mkdir src_tmp
 cp -r /home/claude/case-manager-web/. src_tmp/
 rm -rf src_tmp/node_modules src_tmp/dist src_tmp/.git
-cd src_tmp && zip -r /mnt/user-data/outputs/Patient-follow-V${VERSION}-source.zip .
+cd src_tmp && zip -r "/mnt/user-data/outputs/${PROJECT_NAME} V${VERSION}-source.zip" .
 cd /tmp && rm -rf src_tmp
 ```
 
-**版號規則：** +0.0.1 bug fix；+0.1 新功能；+1.0 架構大改
+**版號規則（Kit §7 嚴格三位、逢十進位）：**
+- 修 bug → c+1（V7.0.0 → V7.0.1）
+- 加新功能 → b+1, c=0（V7.0.5 → V7.1.0）
+- 技術棧 / 資料結構大改 / 主流程重做 → a+1（V7.9.x → V8.0.0）
+- c 達 10 自動進位給 b（V7.0.9 修 bug → V7.1.0）
+
+---
+
+## 十一-b、打包前必做（功能說明書）
+
+**單一真相：** `使用說明書.md` 是說明書主版（中文檔名給個管師看），`USER_GUIDE.md` 是它的英文檔名複本（避免坑 #13 中文檔名 ZIP 亂碼）。
+
+每次打包前：
+1. **先改 `使用說明書.md`**（新增功能加到對應章節、移除功能刪掉說明、版本號自動 sed 更新）
+2. **`cp 使用說明書.md USER_GUIDE.md`** 同步（**不要兩份分別維護**，會分歧）
+3. 打包時兩份都複製進 dist/（給選中文檔名的同仁、也給拿英文檔名的環境）
+
+說明書格式：讓個管師（非工程師、可能是輪替支援同仁）看得懂，不寫程式術語，只寫操作步驟。**目標**：減少同仁問 SELA「這個怎麼操作」的次數。
 
 ---
 
 ## 十二、煙霧測試（每次升版必跑）
+
+> ⚠️ **每版打包前必須更新 `使用說明書.md`**（說明本版新功能操作方式），然後 `cp` 為 `USER_GUIDE.md`。打包時兩份一起放進 dist/。
 
 ```bash
 cd /home/claude/case-manager-web
@@ -356,14 +428,14 @@ grep "APP_VERSION" src/version.ts
 
 按優先序：
 
-1. **PPTX 版面細化** — 實際拿去開會才知道格式夠不夠用；YANG 和 KAO 有機會試用時可以同步調整
-2. 指標摘要頁「待補資料」件數點擊後直接跳到對應病人
-3. 資料匯入工具（Legacy Excel → IndexedDB，含欄位對映 UI）
-4. MDT 統計報表（每月各癌別討論件數、必要提報類別分布）
-5. 工作中心：放療超過56天提示（rt_prolonged）整合 MDT Section 3
+1. **HTML 投影片實測微調** — 等 KAO/YANG 用 V6.9.4 / V7.0.0 實際開完會後才會知道：字級夠不夠大、頁面切換順不順、欄位排序合不合臨床思考方向。沒有真實使用反饋之前其他項都不該插隊。
+2. **PPTX 版面細化** — 有結論的欄位用綠色顯示，與 HTML 投影片風格一致
+3. 資料匯入工具（Legacy Excel → IndexedDB，含欄位對映 UI）— 實際轉舊資料用
+4. 工作中心：放療超過 56 天提示整合 MDT Section 3 必要提報
+5. 指標缺項點擊跳轉（已確認有 navigateToPatient，但要確認實際跳轉正確）
 
 ---
 
 ## 十四、一句話總結
 
-V6.6.6 把這半年來最惡心的三個連環 DB bug（schema 截斷→users 被刪→無限 reload→帳號補建邏輯錯誤）全部解決，MDT 四個 Phase 也完整落地。現在系統可以穩定交給 KAO 和 YANG 試用，下版優先做 PPTX 版面微調，再來才是資料匯入工具。
+V7.0.0 是「規範對齊」里程碑：把這專案融入 SELA Starter Kit V1.7.0 體系（logo 套組、.gitignore、README 模板、雙版本交付、CLAUDE.md 寫作章法）。功能本身沒動，下版回歸主線——先解 KAO/YANG 實際用 V6.9.x 開完會的反饋，重點微調 HTML 投影片字級與 PPTX 版面。資料匯入工具排第三順位，等實際要轉舊資料時再做。
