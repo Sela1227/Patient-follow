@@ -368,6 +368,7 @@ rm -rf dist && npm run build
 cp README.md dist/ && cp CLAUDE.md dist/
 cp USER_GUIDE.md dist/  # 給同仁看的快速上手文件（英文檔名版）
 cp 使用說明書.md dist/  # ⚠️ 主版本，每版必須附
+cp SELA-handoff.md dist/  # 給 Kit Claude 升 Kit 用，部署版也要附（從 GitHub repo 直接抓）
 
 # 部署版（Git Pusher 用，無 -dist 後綴）
 cd dist && zip -r "/mnt/user-data/outputs/${PROJECT_NAME} V${VERSION}.zip" .
