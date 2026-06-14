@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="src/assets/sela.svg" width="120" alt="SELA"/>
+  <img src="src/assets/patient-follow.png" width="160" alt="Patient follow"/>
   <h1>彰濱癌症中心 - 個管病患追蹤系統</h1>
-  <p>Patient follow System｜純前端 PWA，IndexedDB 儲存，無後端</p>
-  <p><strong>V7.0.0</strong></p>
+  <p>Patient follow ｜純前端 PWA，IndexedDB 儲存，無後端</p>
+  <p><strong>V7.1.0</strong></p>
 </div>
 
 ---
@@ -19,15 +19,10 @@
 
 ---
 
-## 安裝
+## 安裝與啟動
 
 ```bash
 npm install
-```
-
-## 啟動
-
-```bash
 npm run dev      # 開發模式
 npm run build    # 打包出 dist/
 ```
@@ -44,12 +39,12 @@ npm run build    # 打包出 dist/
 
 第一次進入點「重置預載資料」會帶入 140 位測試病人 + 3 場 MDT 測試會議；正式使用前用「資料庫 → 刪除所有測試病人」清掉。
 
-詳細操作見 `使用說明書.md`（給個管師看，內容與 `USER_GUIDE.md` 相同）。
+詳細操作見 `使用說明書.md`（內容與 `USER_GUIDE.md` 相同）。
 
 ## 目錄結構
 
 ```
-彰濱癌症中心/
+Patient follow/
 ├── src/
 │   ├── App.tsx                         主入口
 │   ├── version.ts                      版本號（升版必改）
@@ -59,16 +54,24 @@ npm run build    # 打包出 dist/
 │   ├── stores/                         Zustand 全域狀態
 │   ├── db/                             Dexie schema 與測試資料
 │   ├── types/                          型別定義（CORE_14_CANCERS、MDT_GROUP_CONFIG 等）
-│   └── assets/sela.svg                 SELA 品牌標識
+│   └── assets/
+│       ├── patient-follow.png          App logo（主視覺，雙軌 logo §9）
+│       └── sela.svg                    SELA logo（品牌歸屬印記，footer 用）
 ├── public/
-│   ├── favicon/                        SELA logo 完整 favicon 套組
-│   └── manifest.json                   PWA manifest
+│   ├── favicon/                        雙軌 favicon 套組
+│   │   ├── favicon-*.png               app logo 各尺寸（主視覺）
+│   │   ├── apple-touch-icon.png        app logo 180×180
+│   │   ├── android-chrome-*.png        app logo 192/512
+│   │   ├── favicon.ico                 app logo 多尺寸內嵌
+│   │   ├── sela.svg                    SELA logo（footer 用）
+│   │   └── sela-square.svg             SELA logo 方版（about 頁用）
+│   └── manifest.json                   PWA manifest（theme_color = 鋼藍 #5B8FB9）
 ├── CLAUDE.md                           給接手 Claude 的工作上下文
 ├── DESIGN_SYSTEM.md                    Nordic-minimalist 設計系統
 ├── 使用說明書.md                       給個管師看的操作手冊（主版）
 ├── USER_GUIDE.md                       使用說明書的英文檔名複本（避中文檔名亂碼）
 ├── README.md                           本檔
-├── README.OLD.md                       完整版本演進史（V3 → V6.9.4）
+├── README.OLD.md                       完整版本演進史（V3 → V7.1.0）
 ├── SELA-handoff.md                     給 SELA Starter Kit Claude 的反饋
 └── .gitignore
 ```
@@ -85,11 +88,15 @@ npm run build    # 打包出 dist/
 
 ## 版本
 
-**V7.0.0**（對齊 SELA Starter Kit V1.7.0 規範的里程碑版）
+**V7.1.0** — 雙軌 logo 系統落地，對齊 SELA Starter Kit V1.13.0 + V1.16.0。
 
-完整版本歷程見 [`README.OLD.md`](./README.OLD.md)（V3 → V6.9.4 的演進記錄）。
-最新一版的新增內容直接看畫面右下角「版本資訊」或 `src/version.ts`。
+完整版本歷程見 [`README.OLD.md`](./README.OLD.md)（V3 → V7.1.0 的演進記錄）。
 
 ---
 
-> Made by **SELA**, with **Claude** · V7.0.0
+<div align="center">
+  <br>
+  <br>
+  <img src="src/assets/sela.svg" width="60" alt="SELA"/>
+  <p>Made by <strong>SELA</strong>, with <strong>Claude</strong> · V7.1.0</p>
+</div>

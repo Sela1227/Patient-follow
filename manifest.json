@@ -1,11 +1,11 @@
 {
   "name": "彰濱癌症中心 - 個管病患追蹤系統",
-  "short_name": "彰濱個管",
+  "short_name": "Patient follow",
   "description": "彰濱癌症中心個管病患追蹤系統",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAFBFC",
-  "theme_color": "#F36825",
+  "theme_color": "#5B8FB9",
   "orientation": "portrait-primary",
   "icons": [
     {
